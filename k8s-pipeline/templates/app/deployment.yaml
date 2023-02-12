@@ -29,6 +29,9 @@ spec:
       containers:
         - name: webserver
           image: drayfocus/k8spipeline-app:0.05
+          envFrom:
+            - configMapRef:
+                name: k8spipeline-app-config
           securityContext:
             privileged: true
             runAsUser: 0
