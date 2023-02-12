@@ -9,6 +9,11 @@
             "date": 1676219557181,
             "name": "/Users/mac/Documents/www/K8sPipeline/App/src/logs/error/2023-02-12.log",
             "hash": "2cdb7c36bec81808f51aef88f4d858f2fdae7e48dfacc339d15ce838cb1347e8"
+        },
+        {
+            "date": 1676244857032,
+            "name": "/Users/mac/Documents/www/K8sPipeline/App/src/logs/error/2023-02-13.log",
+            "hash": "351205393eff9d2b76050f530351ff8758d7b8563f9ea09edfa51f26a069fd27"
         }
     ],
     "hashType": "sha256"
