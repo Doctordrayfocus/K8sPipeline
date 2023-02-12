@@ -13,7 +13,7 @@ COPY  . .
 RUN cd /usr/src/app/frontend && npm install && npm run build
 
 ## Build server
-RUN cd /usr/src/app && npm install
+RUN cd /usr/src/app && npm install && npm run build
 
 
 EXPOSE 8080
