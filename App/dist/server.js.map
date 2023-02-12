@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/server.ts"],"sourcesContent":["import App from '@/app';\nimport validateEnv from '@utils/validateEnv';\n\nvalidateEnv();\n\nconst app = new App();\n\napp.listen();\n"],"names":["validateEnv","app","App","listen"],"mappings":";;;;4CAAgB;oDACQ;;;;;;AAExBA,IAAAA,oBAAW;AAEX,MAAMC,MAAM,IAAIC,YAAG;AAEnBD,IAAIE,MAAM"}
+{"version":3,"file":"server.js","sourceRoot":"","sources":["../src/server.ts"],"names":[],"mappings":";;;AAAA,wDAAwB;AACxB,6EAA6C;AAE7C,IAAA,qBAAW,GAAE,CAAC;AAEd,MAAM,GAAG,GAAG,IAAI,aAAG,EAAE,CAAC;AAEtB,GAAG,CAAC,MAAM,EAAE,CAAC"}

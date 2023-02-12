@@ -1,64 +1,58 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "resolvers", {
-    enumerable: true,
-    get: ()=>resolvers
-});
-const _pipelineResolver = require("./pipeline.resolver");
-const _authResolver = require("./auth.resolver");
-const _usersResolver = require("./users.resolver");
-const AuthResolver = new _authResolver.authResolver();
-const UserResolver = new _usersResolver.userResolver();
-const PipelineResolver = new _pipelineResolver.pipelineResolver();
-const resolvers = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.resolvers = void 0;
+const pipeline_resolver_1 = require("./pipeline.resolver");
+const auth_resolver_1 = require("./auth.resolver");
+const users_resolver_1 = require("./users.resolver");
+const AuthResolver = new auth_resolver_1.authResolver();
+const UserResolver = new users_resolver_1.userResolver();
+const PipelineResolver = new pipeline_resolver_1.pipelineResolver();
+exports.resolvers = {
     Query: {
-        workspaces () {
+        workspaces() {
             return PipelineResolver.workspaces();
         },
-        repositories (_parent, args) {
+        repositories(_parent, args) {
             return PipelineResolver.repositories(args.workspaceId);
         },
-        pipelines () {
+        pipelines() {
             return PipelineResolver.pipelines();
         },
-        getUsers () {
+        getUsers() {
             return UserResolver.getUsers();
         },
-        getUserById (_parent, args) {
+        getUserById(_parent, args) {
             return UserResolver.getUserById(args.userId);
         },
-        getPipelineData (_parent, args) {
+        getPipelineData(_parent, args) {
             return PipelineResolver.getPipeline(args.pipelineUuid);
-        }
+        },
     },
     Mutation: {
-        signup (_parent, args) {
+        signup(_parent, args) {
             return AuthResolver.signup(args.userData);
         },
-        login (_parent, args) {
+        login(_parent, args) {
             return AuthResolver.login(args.userData);
         },
-        logout (_parent, args) {
+        logout(_parent, args) {
             return AuthResolver.logout(args.userData);
         },
-        createPipelineTemplate (_parent, args) {
+        createPipelineTemplate(_parent, args) {
             return PipelineResolver.createPipelineTemplate(args.createPipelineData);
         },
-        createUser (_parent, args) {
+        createUser(_parent, args) {
             return UserResolver.createUser(args.userData);
         },
-        updateUser (_parent, args) {
+        updateUser(_parent, args) {
             return UserResolver.updateUser(args.userId, args.userData);
         },
-        deleteUser (_parent, args) {
+        deleteUser(_parent, args) {
             return UserResolver.deleteUser(args.userId);
         },
-        updateSetting (_parent, args) {
+        updateSetting(_parent, args) {
             return PipelineResolver.updateSetting(args.settingsUpdateData);
-        }
-    }
+        },
+    },
 };
-
 //# sourceMappingURL=index.js.map

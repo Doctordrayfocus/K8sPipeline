@@ -2,6 +2,18 @@
 # as well as serve any static content.
 FROM hoosin/alpine-nginx-nodejs:latest
 
+# Install python/pip
+ENV PYTHONUNBUFFERED=1
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip setuptools
+
+# Install Rust
+RUN apk add curl
+RUN apk add gcc
+RUN curl –proto ‘=https’ –tlsv1.2 -sSf https://sh.rustup.rs | sh
+RUN source $HOME/.cargo/env
+RUN rustc --version
 
 # Create app directory
 WORKDIR /usr/src/app

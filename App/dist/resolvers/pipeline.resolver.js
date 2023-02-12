@@ -1,18 +1,9 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "pipelineResolver", {
-    enumerable: true,
-    get: ()=>pipelineResolver
-});
-const _pipelineRepository = _interopRequireDefault(require("../repositories/pipeline.repository"));
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        default: obj
-    };
-}
-let pipelineResolver = class pipelineResolver extends _pipelineRepository.default {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.pipelineResolver = void 0;
+const tslib_1 = require("tslib");
+const pipeline_repository_1 = tslib_1.__importDefault(require("@/repositories/pipeline.repository"));
+class pipelineResolver extends pipeline_repository_1.default {
     async workspaces() {
         const paginatedWorkpaces = await this.getWorkspaces();
         return paginatedWorkpaces.data.values;
@@ -38,6 +29,6 @@ let pipelineResolver = class pipelineResolver extends _pipelineRepository.defaul
         const response = await this.updatePipelineSetting(settingsUpdateData.settingUuid, settingsUpdateData.configToUse, settingsUpdateData.serviceConfig);
         return response;
     }
-};
-
+}
+exports.pipelineResolver = pipelineResolver;
 //# sourceMappingURL=pipeline.resolver.js.map

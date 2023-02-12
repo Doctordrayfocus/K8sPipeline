@@ -1,49 +1,40 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "default", {
-    enumerable: true,
-    get: ()=>VariableExtractor
-});
-const _fs = _interopRequireDefault(require("fs"));
-const _path = _interopRequireDefault(require("path"));
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        default: obj
-    };
-}
-let VariableExtractor = class VariableExtractor {
-    constructor(){
-        this.extractTemplateVariables = async (lang)=>{
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const fs_1 = tslib_1.__importDefault(require("fs"));
+const path_1 = tslib_1.__importDefault(require("path"));
+class VariableExtractor {
+    constructor() {
+        this.extractTemplateVariables = async (lang) => {
             const templateVariables = {};
-            return new Promise(async (resolveMain)=>{
+            return new Promise(async (resolveMain) => {
                 const files = [];
                 const folders = {};
-                const readFolderFiles = (folder = '')=>{
-                    return new Promise((resolve)=>{
-                        _fs.default.readdir(_path.default.join(__dirname, `../templates/${lang}${folder !== '' ? folder : ''}`), (err, items)=>{
+                const readFolderFiles = (folder = '') => {
+                    return new Promise(resolve => {
+                        fs_1.default.readdir(path_1.default.join(__dirname, `../templates/${lang}${folder !== '' ? folder : ''}`), (err, items) => {
                             resolve({
                                 items,
-                                folder
+                                folder,
                             });
                         });
                     });
                 };
                 const rootFileAndFolders = await readFolderFiles();
-                const getAllConfigFiles = async ()=>{
-                    const getFilesInFolders = async (item, folder = '')=>{
+                const getAllConfigFiles = async () => {
+                    const getFilesInFolders = async (item, folder = '') => {
                         const itemIsFolder = item.split('.').length === 1;
                         if (itemIsFolder) {
                             const folderName = `${folder === '' ? `/${item}` : `${folder}`}`;
                             folders[folderName] = [];
                             const fileFolder = await readFolderFiles(folderName);
                             const allPromises = [];
-                            fileFolder.items.forEach((subItem)=>{
+                            fileFolder.items.forEach(subItem => {
                                 allPromises.push(getFilesInFolders(subItem, fileFolder.folder + '/' + subItem));
                             });
                             await Promise.all(allPromises);
-                        } else {
+                        }
+                        else {
                             const fullFilePath = `${folder !== '' ? folder : item}`;
                             if (fullFilePath.split('.')[1] === 'yaml' || fullFilePath.split('.')[1] === 'yml') {
                                 files.push(fullFilePath);
@@ -51,18 +42,20 @@ let VariableExtractor = class VariableExtractor {
                         }
                     };
                     const allPromises = [];
-                    rootFileAndFolders.items.forEach((item)=>{
+                    rootFileAndFolders.items.forEach(item => {
                         allPromises.push(getFilesInFolders(item, ''));
                     });
-                    await Promise.all(allPromises).then(()=>{});
+                    await Promise.all(allPromises).then(() => {
+                        // console.log(files);
+                    });
                 };
                 await getAllConfigFiles();
-                const matchAll = (matchText)=>{
+                const matchAll = (matchText) => {
                     let finalMatches = [];
                     const regex = /\$\{.*\}/gi;
                     const matches = matchText.match(regex);
                     if (matches) {
-                        for(let index = 0; index < matches.length; index++){
+                        for (let index = 0; index < matches.length; index++) {
                             const matchItem = matches[index];
                             let matchLevel1 = matchItem.split('-');
                             if (matchLevel1.length == 1) {
@@ -72,7 +65,7 @@ let VariableExtractor = class VariableExtractor {
                                 matchLevel1 = matchItem.split(':');
                             }
                             const newMatch = [];
-                            matchLevel1.forEach((matchItem1)=>{
+                            matchLevel1.forEach(matchItem1 => {
                                 if (matchItem1.match(regex)) {
                                     newMatch.push(matchItem1.match(regex));
                                 }
@@ -83,17 +76,15 @@ let VariableExtractor = class VariableExtractor {
                     finalMatches = finalMatches.flat(5);
                     return finalMatches;
                 };
-                const readAndExtractVariable = (file)=>{
-                    return new Promise((resolve)=>{
+                const readAndExtractVariable = (file) => {
+                    return new Promise(resolve => {
                         try {
-                            _fs.default.readFile(_path.default.join(__dirname, `../templates/${lang}${file}`), {
-                                encoding: 'utf-8'
-                            }, function(err, data) {
+                            fs_1.default.readFile(path_1.default.join(__dirname, `../templates/${lang}${file}`), { encoding: 'utf-8' }, function (err, data) {
                                 if (!err) {
                                     try {
                                         const allMatches = matchAll(data);
                                         if (allMatches) {
-                                            allMatches.forEach((variable)=>{
+                                            allMatches.forEach(variable => {
                                                 const initialString = variable.substring(2);
                                                 const property = `${initialString.substring(0, initialString.length - 1)}`;
                                                 const folderName = file.split('/');
@@ -107,37 +98,46 @@ let VariableExtractor = class VariableExtractor {
                                             });
                                         }
                                         resolve('done');
-                                    } catch (error) {
+                                    }
+                                    catch (error) {
                                         console.log(error);
                                     }
-                                } else {
+                                }
+                                else {
                                     console.log(err);
                                     resolve(null);
                                 }
                             });
-                        } catch (error) {
+                        }
+                        catch (error) {
                             console.log(error);
                         }
                     });
                 };
-                const extractVariableFromAllFiles = async ()=>{
+                const extractVariableFromAllFiles = async () => {
                     const allPromises = [];
-                    files.forEach(async (file)=>{
-                        allPromises.push(readAndExtractVariable(file).then(()=>{}).catch((err)=>{
+                    files.forEach(async (file) => {
+                        allPromises.push(readAndExtractVariable(file)
+                            .then(() => {
+                            //
+                        })
+                            .catch(err => {
                             console.log(err);
                         }));
                     });
-                    await Promise.all(allPromises).then(()=>{});
+                    await Promise.all(allPromises).then(() => {
+                        //
+                    });
                 };
-                await extractVariableFromAllFiles().then(()=>{
+                await extractVariableFromAllFiles().then(() => {
                     resolveMain({
                         templateVariables,
-                        folders
+                        folders,
                     });
                 });
             });
         };
     }
-};
-
+}
+exports.default = VariableExtractor;
 //# sourceMappingURL=VariableExtractor.js.map

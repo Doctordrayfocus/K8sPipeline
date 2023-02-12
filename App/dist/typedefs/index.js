@@ -1,12 +1,7 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "typeDefs", {
-    enumerable: true,
-    get: ()=>typeDefs
-});
-const typeDefs = `#graphql
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.typeDefs = void 0;
+exports.typeDefs = `#graphql
   # Comments in GraphQL Strings (such as this one) start with the hash (#) symbol.
 
   input CreateUserDto {
@@ -114,5 +109,4 @@ type Repository {
   ): Boolean
  }
 `;
-
 //# sourceMappingURL=index.js.map

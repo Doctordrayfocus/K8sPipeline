@@ -1,16 +1,9 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-const _app = _interopRequireDefault(require("./app"));
-const _validateEnv = _interopRequireDefault(require("./utils/validateEnv"));
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        default: obj
-    };
-}
-(0, _validateEnv.default)();
-const app = new _app.default();
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const app_1 = tslib_1.__importDefault(require("@/app"));
+const validateEnv_1 = tslib_1.__importDefault(require("@utils/validateEnv"));
+(0, validateEnv_1.default)();
+const app = new app_1.default();
 app.listen();
-
 //# sourceMappingURL=server.js.map

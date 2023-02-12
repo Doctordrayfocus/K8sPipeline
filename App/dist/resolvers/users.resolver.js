@@ -1,18 +1,9 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "userResolver", {
-    enumerable: true,
-    get: ()=>userResolver
-});
-const _usersRepository = _interopRequireDefault(require("../repositories/users.repository"));
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        default: obj
-    };
-}
-let userResolver = class userResolver extends _usersRepository.default {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userResolver = void 0;
+const tslib_1 = require("tslib");
+const users_repository_1 = tslib_1.__importDefault(require("@repositories/users.repository"));
+class userResolver extends users_repository_1.default {
     async getUsers() {
         const users = await this.userFindAll();
         return users;
@@ -33,6 +24,6 @@ let userResolver = class userResolver extends _usersRepository.default {
         const user = await this.userDelete(userId);
         return user;
     }
-};
-
+}
+exports.userResolver = userResolver;
 //# sourceMappingURL=users.resolver.js.map

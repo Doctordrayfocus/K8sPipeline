@@ -1,10 +1,9 @@
 import { verify } from 'jsonwebtoken';
-import { AuthChecker } from 'type-graphql';
 import { getRepository } from 'typeorm';
 import { SECRET_KEY } from '@config';
 import { UserEntity } from '@entities/users.entity';
 import { HttpException } from '@exceptions/HttpException';
-import { RequestWithUser, DataStoredInToken } from '@interfaces/auth.interface';
+import { DataStoredInToken } from '@interfaces/auth.interface';
 
 export const authMiddleware = async req => {
   try {
@@ -23,7 +22,7 @@ export const authMiddleware = async req => {
   }
 };
 
-export const authChecker: AuthChecker<RequestWithUser> = async ({ context: { user } }) => {
+export const authChecker = async ({ context: { user } }) => {
   if (!user) {
     throw new HttpException(404, 'Authentication token missing');
   }

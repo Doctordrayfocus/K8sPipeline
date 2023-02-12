@@ -1,29 +1,21 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "default", {
-    enumerable: true,
-    get: ()=>TemplateSyncer
-});
-const _shelljs = _interopRequireDefault(require("shelljs"));
-const _path = _interopRequireDefault(require("path"));
-const _config = require("../config");
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        default: obj
-    };
-}
-let TemplateSyncer = class TemplateSyncer {
-    constructor(){
-        this.syncRemoteFiles = ()=>{
-            const configFolder = _path.default.join(__dirname, `../`);
-            _shelljs.default.cd(configFolder).exec(`git clone ${_config.TEMPLATE_CONFIG_REPO_URL} templates`);
-            setInterval(async ()=>{
-                _shelljs.default.cd(configFolder).exec(`git pull`);
-            }, 1000 * parseInt(_config.TEMPLATE_SYNC_INTERVAL));
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const shelljs_1 = tslib_1.__importDefault(require("shelljs"));
+const path_1 = tslib_1.__importDefault(require("path"));
+const config_1 = require("@/config");
+class TemplateSyncer {
+    constructor() {
+        this.syncRemoteFiles = () => {
+            const configFolder = path_1.default.join(__dirname, `../`);
+            // clone config repo on initiation
+            shelljs_1.default.cd(configFolder).exec(`git clone ${config_1.TEMPLATE_CONFIG_REPO_URL} templates`);
+            // sync repo in interval
+            setInterval(async () => {
+                shelljs_1.default.cd(configFolder).exec(`git pull origin main`);
+            }, 1000 * parseInt(config_1.TEMPLATE_SYNC_INTERVAL));
         };
     }
-};
-
+}
+exports.default = TemplateSyncer;
 //# sourceMappingURL=TemplateSyncer.js.map
