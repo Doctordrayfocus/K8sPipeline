@@ -11,8 +11,8 @@ deployController:
 
 pipelineApp:
   deploymentReplica: 1
-  letsEncryptEmail: ""
-  appUrl: ""
+  letsEncryptEmail: "developer@example.com"
+  appUrl: "sample.domain.com"
   buildTemplateRepository: "https://github.com/Doctordrayfocus/K8sPipelineTemplates.git"
   # Git repository sync interval in seconds 
   buildTemplateSyncInterval: 100
