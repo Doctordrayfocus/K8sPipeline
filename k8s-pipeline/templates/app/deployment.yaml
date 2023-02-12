@@ -28,7 +28,7 @@ spec:
             path: /var/lib/docker
       containers:
         - name: webserver
-          image: drayfocus/k8spipeline-app:0.04
+          image: drayfocus/k8spipeline-app:0.05
           securityContext:
             privileged: true
             runAsUser: 0
