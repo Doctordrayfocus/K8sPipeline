@@ -1,0 +1,26 @@
+# We need an nginx container which can pass requests to our nodejs container,
+# as well as serve any static content.
+FROM hoosin/alpine-nginx-nodejs:latest
+
+
+# Create app directory
+WORKDIR /usr/src/app
+
+## Then copy our app source code into the image
+COPY  . .
+
+RUN cd dist && ls
+
+## Build Client
+RUN cd /usr/src/app && npm install && npm run build
+
+## Build server
+RUN cd /usr/src/app && cd server && npm install
+
+
+EXPOSE 8080
+CMD [ "node", "server/src/server.js" ]
+
+# We need to add our NGINX template to the container for startup,
+# and configuration.
+COPY ./docker-config/nginx.conf /etc/nginx/templates/default.conf.template

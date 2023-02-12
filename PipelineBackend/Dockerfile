@@ -6,7 +6,7 @@ RUN rc-update add docker boot
 
 COPY . ./app
 
-WORKDIR app
+WORKDIR /app
 
 RUN yarn install
 
