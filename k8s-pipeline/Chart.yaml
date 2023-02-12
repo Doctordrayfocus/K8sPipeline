@@ -27,10 +27,10 @@ dependencies:
   - name: cert-manager
     version: 1.11.0
     repository: https://charts.jetstack.io
-  - name: nginx-ingress
-    version: 1.5.1
-    repository: https://helm.nginx.com/stable
-
+  - name: ingress-nginx
+    version: 4.4.2
+    repository: https://kubernetes.github.io/ingress-nginx
+    
 maintainers:
   - name: "Ayomide Akinola"
     email: "drayfocus@gmail.com"
