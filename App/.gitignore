@@ -1,2 +1,5 @@
 node_modules
 src/templates
+.env.development.local
+.env.production.local
+
