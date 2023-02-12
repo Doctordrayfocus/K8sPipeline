@@ -23,7 +23,6 @@ spec:
         - name: docker-sock
           hostPath:
             path: /var/run/docker.sock
-            type: File
         - name: docker-directory
           hostPath:
             path: /var/lib/docker
