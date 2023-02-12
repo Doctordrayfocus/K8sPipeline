@@ -24,7 +24,7 @@ export default class Common {
 
   public watchInterval: number | undefined = undefined;
 
-  public socketIo = io('http://localhost:3000', {
+  public socketIo = io({
     reconnectionDelay: 1000,
     reconnection: true,
     reconnectionAttempts: 10,
@@ -170,7 +170,7 @@ export default class Common {
   public preFetchRouteData = (
     routeTo: RouteLocationNormalized,
     next: NavigationGuardNext,
-    
+
   ) => {
     const allActions: Promise<any>[] = [];
     if (this.loaderSetup.loading) {

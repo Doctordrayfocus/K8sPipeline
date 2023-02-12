@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8spipeline-app-config
+data:
+  PORT: "8080"
+  
+  # Database configs
+  DB_HOST: "127.0.0.1"
+  DB_PORT: "3306"
+  DB_USER: "root"
+  DB_PASSWORD: "password"
+  DB_DATABASE: "k8s_pipeline"
+
+  SECRET_KEY: "secretKey"
+
+  # log
+  LOG_FORMAT: "dev"
+  LOG_DIR: "../logs"
+
+  # cors
+  ORIGIN: "true",
+  CREDENTIALS: "true"
+
+  # github auth
+  GITHUB_CLIENT_ID: ""
+  GITHUB_CLIENT_SECRET: ""
+
+  # Gitlab auth
+  GITLAB_APP_ID: ""
+  GITLAB_APP_SECRET: ""
+
+  # Bitbucket auth
+  BITBUCKET_CLIENT_ID: ""
+  BITBUCKET_CLIENT_SECRET: ""
+
+  # template setup
+  TEMPLATE_CONFIG_REPO_URL: ""
+  TEMPLATE_SYNC_INTERVAL: ""
+

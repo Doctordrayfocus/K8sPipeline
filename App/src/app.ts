@@ -46,7 +46,7 @@ class App {
   constructor() {
     this.app = express();
     this.env = NODE_ENV || 'development';
-    this.port = PORT || 3000;
+    this.port = PORT || 8080;
 
     this.connectToDatabase();
     this.setSocketServe();
