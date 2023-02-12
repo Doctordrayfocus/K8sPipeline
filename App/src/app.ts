@@ -21,6 +21,7 @@ import http from 'http';
 import { json } from 'body-parser';
 import { typeDefs } from './typedefs';
 import { resolvers } from './resolvers';
+import path from 'path';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -118,6 +119,12 @@ class App {
       // this.app.post('/auth/github/callback', authStrategyRepo.handleGithubCallback('github'), (req, res) => {
       //   res.sendFile('../static/close.html');
       // });
+
+      this.app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+      this.app.get('/*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+      });
     } catch (error) {
       console.error(error);
     }

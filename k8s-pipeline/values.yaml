@@ -5,7 +5,7 @@
 deployController:
   # Specify your docker registery
   dockerRegistry: "docker.io"
-  configGitRepository: "https://github.com/Doctordrayfocus/K8sPipelineTemplates"
+  configGitRepository: "https://github.com/Doctordrayfocus/K8sPipelineTemplates.git"
   # Git repository sync interval in seconds
   repoSyncInterval: 3
   

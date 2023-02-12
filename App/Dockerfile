@@ -9,17 +9,15 @@ WORKDIR /usr/src/app
 ## Then copy our app source code into the image
 COPY  . .
 
-RUN cd dist && ls
-
 ## Build Client
-RUN cd /usr/src/app && npm install && npm run build
+RUN cd /usr/src/app/frontend && npm install && npm run build
 
 ## Build server
-RUN cd /usr/src/app && cd server && npm install
+RUN cd /usr/src/app && npm install
 
 
 EXPOSE 8080
-CMD [ "node", "server/src/server.js" ]
+CMD [ "npm", "run", "start" ]
 
 # We need to add our NGINX template to the container for startup,
 # and configuration.
