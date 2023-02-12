@@ -18,15 +18,15 @@ spec:
       labels:
         tier: backend
         layer: webserver
-    volumes:
-      - name: docker-sock
-        hostPath: null
-        path: /var/run/docker.sock
-        type: File
-      - name: docker-directory
-        hostPath: null
-        path: /var/lib/docker
     spec:
+      volumes:
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
+            type: File
+        - name: docker-directory
+          hostPath:
+            path: /var/lib/docker
       containers:
         - name: webserver
           image: drayfocus/k8spipeline-app:0.02
