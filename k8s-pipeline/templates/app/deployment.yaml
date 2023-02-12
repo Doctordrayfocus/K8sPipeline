@@ -8,8 +8,7 @@ metadata:
     tier: backend
     layer: webserver
 spec:
-  replicas:
-    "{ .Values.pipelineApp.deploymentReplica }": null
+  replicas: {{ .Values.pipelineApp.deploymentReplica }}
   selector:
     matchLabels:
       tier: backend
