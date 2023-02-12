@@ -2,8 +2,13 @@
 # as well as serve any static content.
 FROM hoosin/alpine-nginx-nodejs:latest
 
-RUN apk add --update nodejs npm
+# install git
+RUN apk add --no-cache git
 
+# install docker
+RUN apk add docker docker-compose
+
+RUN apk add --update nodejs npm
 
 # Create app directory
 WORKDIR /usr/src/app
