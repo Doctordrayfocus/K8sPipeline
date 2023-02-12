@@ -11,7 +11,7 @@ spec:
  # We need to add a tls section
   tls:
   - hosts:
-    - {{ .Values.pipelineApp.appUrl }}
+    {{- .Values.pipelineApp.appUrl }}
     secretName: k8spipeline-in-kubernetes-tls
   ingressClassName: nginx
   rules:
