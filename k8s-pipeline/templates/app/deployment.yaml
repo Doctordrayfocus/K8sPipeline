@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,7 +8,8 @@ metadata:
     tier: backend
     layer: webserver
 spec:
-  replicas: {{ .Values.pipelineApp.deploymentReplica }}
+  replicas:
+    "{ .Values.pipelineApp.deploymentReplica }": null
   selector:
     matchLabels:
       tier: backend
@@ -18,13 +20,13 @@ spec:
         tier: backend
         layer: webserver
     volumes:
-    - name: docker-sock
-        hostPath:
-        path: "/var/run/docker.sock"
+      - name: docker-sock
+        hostPath: null
+        path: /var/run/docker.sock
         type: File
-    - name: docker-directory
-        hostPath:
-        path: "/var/lib/docker"
+      - name: docker-directory
+        hostPath: null
+        path: /var/lib/docker
     spec:
       containers:
         - name: webserver
@@ -39,7 +41,6 @@ spec:
             - mountPath: /var/run/docker.sock
               name: docker-sock
               readOnly: false
-            - mountPath: "/var/lib/docker"
+            - mountPath: /var/lib/docker
               name: docker-directory
               readOnly: false
-        

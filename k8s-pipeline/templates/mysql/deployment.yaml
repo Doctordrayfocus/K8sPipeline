@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,7 +22,7 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               value: password
             - name: MYSQL_DATABASE
-                value: k8s_pipeline
+              value: k8s_pipeline
           ports:
             - containerPort: 3306
               name: mysql
