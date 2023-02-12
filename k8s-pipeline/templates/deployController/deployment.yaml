@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sdeploytemplates-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8sdeploytemplates-controller
+  template:
+    metadata:
+      labels:
+        app: k8sdeploytemplates-controller
+    spec:
+      serviceAccountName: k8spipeline-deployer
+      containers:
+        - name: k8sdeploytemplates
+          image: drayfocus/apptemplate-controller:0.51
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: k8spipeline-deployer-config

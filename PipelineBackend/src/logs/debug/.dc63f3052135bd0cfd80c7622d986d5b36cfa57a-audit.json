@@ -1,0 +1,40 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/logs/debug/.dc63f3052135bd0cfd80c7622d986d5b36cfa57a-audit.json",
+    "files": [
+        {
+            "date": 1675521456649,
+            "name": "/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/logs/debug/2023-02-04.log",
+            "hash": "4ed63ae97a77bfac247ca55b3ae406b32e2664e083ed46f941dd8c247fa5def0"
+        },
+        {
+            "date": 1675595444128,
+            "name": "/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/logs/debug/2023-02-05.log",
+            "hash": "c1d20cbee79aba59ef65c2e683647bc83d7c7e47a826459f28c0a5840c573387"
+        },
+        {
+            "date": 1675643689591,
+            "name": "/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/logs/debug/2023-02-06.log",
+            "hash": "218e940248487ce1692dfb709768f4c44224f1cac9603a6b588ad2cff8c5d83d"
+        },
+        {
+            "date": 1676019279101,
+            "name": "/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/logs/debug/2023-02-10.log",
+            "hash": "274a4a7456c53355ae57f6f88cff57672dd73589c90b41a523eb78bd43bca3e1"
+        },
+        {
+            "date": 1676070130552,
+            "name": "/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/logs/debug/2023-02-11.log",
+            "hash": "0ecc00b2f512b76f97656aa77054094c376946314ca4314eb90ad03fbc675409"
+        },
+        {
+            "date": 1676191159597,
+            "name": "/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/logs/debug/2023-02-12.log",
+            "hash": "ae89facdd589317eba4d42b8993ba67e721bdc337af4844a97d021072de03b76"
+        }
+    ],
+    "hashType": "sha256"
+}
