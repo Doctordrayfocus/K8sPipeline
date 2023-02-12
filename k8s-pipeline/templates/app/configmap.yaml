@@ -4,9 +4,9 @@ metadata:
   name: k8spipeline-app-config
 data:
   PORT: "8080"
-  
+
   # Database configs
-  DB_HOST: "127.0.0.1"
+  DB_HOST: "k8spipeline-mysql.{{ .Release.Namespace }}.svc.cluster.local"
   DB_PORT: "3306"
   DB_USER: "root"
   DB_PASSWORD: "password"
@@ -23,18 +23,19 @@ data:
   CREDENTIALS: "true"
 
   # github auth
-  GITHUB_CLIENT_ID: ""
-  GITHUB_CLIENT_SECRET: ""
+  GITHUB_CLIENT_ID: "{{ .Values.pipelineApp.githubClientID }}"
+  GITHUB_CLIENT_SECRET: "{{ .Values.pipelineApp.githubClientSecret }}"
 
   # Gitlab auth
-  GITLAB_APP_ID: ""
-  GITLAB_APP_SECRET: ""
+  GITLAB_APP_ID: "{{ .Values.pipelineApp.gitlabAppID }}"
+  GITLAB_APP_SECRET: "{{ .Values.pipelineApp.gitlabAppSecret }}"
 
   # Bitbucket auth
-  BITBUCKET_CLIENT_ID: ""
-  BITBUCKET_CLIENT_SECRET: ""
+  BITBUCKET_CLIENT_ID: "{{ .Values.pipelineApp.bitbucketClientID }}"
+  BITBUCKET_CLIENT_SECRET: "{{ .Values.pipelineApp.bitbuckerClientSecret }}"
 
   # template setup
-  TEMPLATE_CONFIG_REPO_URL: ""
-  TEMPLATE_SYNC_INTERVAL: ""
+  TEMPLATE_CONFIG_REPO_URL: "{{ .Values.pipelineApp.buildTemplateRepository }}"
+  TEMPLATE_SYNC_INTERVAL: "{{ .Values.pipelineApp.buildTemplateSyncInterval }}"
+  DOCKER_REGISTRY: "{{ .Values.deployController.dockerRegistry }}"
 

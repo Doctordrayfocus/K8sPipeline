@@ -13,13 +13,13 @@ data:
   API_VERSION: "v1"
 
   # default docker container registry
-  DOCKER_REGISTRY: {{- .Values.deployController.dockerRegistry  }}
+  DOCKER_REGISTRY: "{{ .Values.deployController.dockerRegistry  }}"
 
   # default custom resource namespace
-  RESOURCE_NAMESPACE: {{- .Release.Namespace }}
+  RESOURCE_NAMESPACE: "{{ .Release.Namespace }}"
 
   # git repo url for template config files
-  CONFIG_REPO_URL: {{- .Values.deployController.configGitRepository }}
+  CONFIG_REPO_URL: "{{ .Values.deployController.configGitRepository }}"
 
   # repo sync interval (in seconds)
-  SYNC_INTERVAL: {{- .Values.deployController.repoSyncInterval }}
+  SYNC_INTERVAL: "{{ .Values.deployController.repoSyncInterval }}"

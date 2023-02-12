@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: k8spipeline-app-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    # We need to add the cluster issuer annotation
+    cert-manager.io/cluster-issuer: k8spipeline-app
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+spec:
+ # We need to add a tls section
+  tls:
+  - hosts:
+    - {{ .Values.pipelineApp.appUrl }}
+    secretName: k8spipeline-in-kubernetes-tls
+  ingressClassName: nginx
+  rules:
+  # We also need to add a host for our ingress path
+  - host: {{ .Values.pipelineApp.appUrl }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: k8spipeline-app-webserver
+            port:
+              number: 80
