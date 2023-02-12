@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "/Users/mac/Documents/www/K8sPipeline/App/dist/logs/error/.5a822a22edd38c1ff6bbceac9c6d46b4bf0eef38-audit.json",
+    "files": [
+        {
+            "date": 1676219322064,
+            "name": "/Users/mac/Documents/www/K8sPipeline/App/dist/logs/error/2023-02-12.log",
+            "hash": "cc8b21cfa2a1f3030181e2fdab3c63be14fe8ffa2c168e095fb1679f02fbf0bd"
+        }
+    ],
+    "hashType": "sha256"
+}

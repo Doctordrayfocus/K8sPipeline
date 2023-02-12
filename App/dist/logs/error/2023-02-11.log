@@ -1,0 +1,396 @@
+2023-02-11 00:02:10 error: uncaughtException: Cannot read properties of undefined (reading 'setGlobalSocket')
+TypeError: Cannot read properties of undefined (reading 'setGlobalSocket')
+    at new App (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:44:21)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts:10:13)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at phase4 (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/bin.ts:649:14)
+2023-02-11 12:37:37 error: uncaughtException: OneToMany is not defined
+ReferenceError: OneToMany is not defined
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/entities/pipeline.entity.ts:31:3)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/repositories/pipeline.repository.ts:3:1)
+2023-02-11 12:39:56 error: uncaughtException: await is only valid in async functions and the top level bodies of modules
+/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/repositories/pipeline.repository.ts:155
+            return await dataSource.getRepository(User).createQueryBuilder('user').getMany();
+                   ^^^^^
+
+SyntaxError: await is only valid in async functions and the top level bodies of modules
+    at Object.compileFunction (node:vm:360:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1088:15)
+    at Module._compile (node:internal/modules/cjs/loader:1123:27)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+2023-02-11 14:37:33 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts:1:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:40:02 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts:1:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:41:29 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts:1:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:42:04 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts:1:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:43:57 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts:1:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:44:27 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts:2:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:44:34 error: uncaughtException: Authorized is not defined
+ReferenceError: Authorized is not defined
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/auth.resolver.ts:20:9)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts:4:1)
+2023-02-11 14:44:54 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts:1:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:45:20 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts:2:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:45:29 error: uncaughtException: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+Error: Cannot find module 'type-graphql'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts
+- /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._resolveFilename (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/tsconfig-paths/src/register.ts:115:36)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/dtos/users.dto.ts:2:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+2023-02-11 14:45:40 error: uncaughtException: Mutation is not defined
+ReferenceError: Mutation is not defined
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/resolvers/users.resolver.ts:29:9)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts:5:1)
+2023-02-11 17:35:51 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/resolvers/index.ts[0m:[93m11[0m:[93m50[0m - [91merror[0m[90m TS1005: [0m'{' expected.
+
+[7m11[0m     workspaces(parent, args, contextValue, info) => {
+[7m  [0m [91m                                                 ~~[0m
+[96msrc/resolvers/index.ts[0m:[93m13[0m:[93m6[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m13[0m     },
+[7m  [0m [91m     ~[0m
+[96msrc/resolvers/index.ts[0m:[93m15[0m:[93m14[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m15[0m     pipelines: PipelineResolver.pipelines,
+[7m  [0m [91m             ~[0m
+[96msrc/resolvers/index.ts[0m:[93m16[0m:[93m13[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m16[0m     getUsers: UserResolver.getUsers,
+[7m  [0m [91m            ~[0m
+[96msrc/resolvers/index.ts[0m:[93m17[0m:[93m16[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m17[0m     getUserById: UserResolver.getUserById,
+[7m  [0m [91m               ~[0m
+[96msrc/resolvers/index.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m18[0m   },
+[7m  [0m [91m  ~[0m
+[96msrc/resolvers/index.ts[0m:[93m18[0m:[93m4[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m18[0m   },
+[7m  [0m [91m   ~[0m
+[96msrc/resolvers/index.ts[0m:[93m21[0m:[93m10[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m21[0m     login: AuthResolver.login,
+[7m  [0m [91m         ~[0m
+[96msrc/resolvers/index.ts[0m:[93m22[0m:[93m11[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m22[0m     logout: AuthResolver.logout,
+[7m  [0m [91m          ~[0m
+[96msrc/resolvers/index.ts[0m:[93m23[0m:[93m27[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m23[0m     createPipelineTemplate: PipelineResolver.createPipelineTemplate,
+[7m  [0m [91m                          ~[0m
+[96msrc/resolvers/index.ts[0m:[93m24[0m:[93m15[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m24[0m     createUser: UserResolver.createUser,
+[7m  [0m [91m              ~[0m
+[96msrc/resolvers/index.ts[0m:[93m25[0m:[93m15[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m25[0m     updateUser: UserResolver.updateUser,
+[7m  [0m [91m              ~[0m
+[96msrc/resolvers/index.ts[0m:[93m26[0m:[93m15[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m26[0m     deleteUser: UserResolver.deleteUser,
+[7m  [0m [91m              ~[0m
+[96msrc/resolvers/index.ts[0m:[93m27[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m27[0m   },
+[7m  [0m [91m  ~[0m
+[96msrc/resolvers/index.ts[0m:[93m27[0m:[93m4[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m27[0m   },
+[7m  [0m [91m   ~[0m
+[96msrc/resolvers/index.ts[0m:[93m28[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m28[0m };
+[7m  [0m [91m~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/resolvers/index.ts[0m:[93m11[0m:[93m50[0m - [91merror[0m[90m TS1005: [0m'{' expected.
+
+[7m11[0m     workspaces(parent, args, contextValue, info) => {
+[7m  [0m [91m                                                 ~~[0m
+[96msrc/resolvers/index.ts[0m:[93m13[0m:[93m6[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m13[0m     },
+[7m  [0m [91m     ~[0m
+[96msrc/resolvers/index.ts[0m:[93m15[0m:[93m14[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m15[0m     pipelines: PipelineResolver.pipelines,
+[7m  [0m [91m             ~[0m
+[96msrc/resolvers/index.ts[0m:[93m16[0m:[93m13[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m16[0m     getUsers: UserResolver.getUsers,
+[7m  [0m [91m            ~[0m
+[96msrc/resolvers/index.ts[0m:[93m17[0m:[93m16[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m17[0m     getUserById: UserResolver.getUserById,
+[7m  [0m [91m               ~[0m
+[96msrc/resolvers/index.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m18[0m   },
+[7m  [0m [91m  ~[0m
+[96msrc/resolvers/index.ts[0m:[93m18[0m:[93m4[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m18[0m   },
+[7m  [0m [91m   ~[0m
+[96msrc/resolvers/index.ts[0m:[93m21[0m:[93m10[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m21[0m     login: AuthResolver.login,
+[7m  [0m [91m         ~[0m
+[96msrc/resolvers/index.ts[0m:[93m22[0m:[93m11[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m22[0m     logout: AuthResolver.logout,
+[7m  [0m [91m          ~[0m
+[96msrc/resolvers/index.ts[0m:[93m23[0m:[93m27[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m23[0m     createPipelineTemplate: PipelineResolver.createPipelineTemplate,
+[7m  [0m [91m                          ~[0m
+[96msrc/resolvers/index.ts[0m:[93m24[0m:[93m15[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m24[0m     createUser: UserResolver.createUser,
+[7m  [0m [91m              ~[0m
+[96msrc/resolvers/index.ts[0m:[93m25[0m:[93m15[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m25[0m     updateUser: UserResolver.updateUser,
+[7m  [0m [91m              ~[0m
+[96msrc/resolvers/index.ts[0m:[93m26[0m:[93m15[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m26[0m     deleteUser: UserResolver.deleteUser,
+[7m  [0m [91m              ~[0m
+[96msrc/resolvers/index.ts[0m:[93m27[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m27[0m   },
+[7m  [0m [91m  ~[0m
+[96msrc/resolvers/index.ts[0m:[93m27[0m:[93m4[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m27[0m   },
+[7m  [0m [91m   ~[0m
+[96msrc/resolvers/index.ts[0m:[93m28[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m28[0m };
+[7m  [0m [91m~[0m
+
+    at createTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:863:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1379:34
+    at Object.compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1458:13)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+2023-02-11 21:28:17 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/pipeline.repository.ts[0m:[93m197[0m:[93m7[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m197[0m       .getRepository()
+[7m   [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/pipeline.repository.ts[0m:[93m197[0m:[93m7[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m197[0m       .getRepository()
+[7m   [0m [91m      ~[0m
+
+    at createTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:863:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1379:34
+    at Object.compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1458:13)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)

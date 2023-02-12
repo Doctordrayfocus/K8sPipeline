@@ -202,8 +202,6 @@ export default class PipelineRepository {
 
     const templateConfig = await this.getTemplateVariables(pipelineData.lang);
 
-    console.log(templateConfig.folders);
-
     pipelineData.lang_config_folders = JSON.stringify(templateConfig.folders);
 
     return pipelineData;

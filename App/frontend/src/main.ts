@@ -33,7 +33,7 @@ const init = async () => {
 		setup() {
 			const router = useRouter()
 			Logic.Common.SetRouter(router)
-			Logic.Common.SetApiUrl('/graphql');
+			Logic.Common.SetApiUrl( window.location.origin + '/graphql');
 		}
 	})
 		.component("AppLayout", AppLayout)

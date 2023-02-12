@@ -1,0 +1,196 @@
+2023-02-10 09:57:49 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/helpers/VariableExtractor.ts[0m:[93m5[0m:[93m85[0m - [91merror[0m[90m TS1005: [0m'>' expected.
+
+[7m5[0m   public extractTemplateVariables = async (lang: string): Promise< templateVariables: any[];
+[7m [0m [91m                                                                                    ~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m5[0m:[93m87[0m - [91merror[0m[90m TS1434: [0mUnexpected keyword or identifier.
+
+[7m5[0m   public extractTemplateVariables = async (lang: string): Promise< templateVariables: any[];
+[7m [0m [91m                                                                                      ~~~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m6[0m:[93m21[0m - [91merror[0m[90m TS1068: [0mUnexpected token. A constructor, method, accessor, or property was expected.
+
+[7m6[0m   folders: string[];> => {
+[7m [0m [91m                    ~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m6[0m:[93m23[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m6[0m   folders: string[];> => {
+[7m [0m [91m                      ~~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m162[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m162[0m }
+[7m   [0m [91m~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/helpers/VariableExtractor.ts[0m:[93m5[0m:[93m85[0m - [91merror[0m[90m TS1005: [0m'>' expected.
+
+[7m5[0m   public extractTemplateVariables = async (lang: string): Promise< templateVariables: any[];
+[7m [0m [91m                                                                                    ~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m5[0m:[93m87[0m - [91merror[0m[90m TS1434: [0mUnexpected keyword or identifier.
+
+[7m5[0m   public extractTemplateVariables = async (lang: string): Promise< templateVariables: any[];
+[7m [0m [91m                                                                                      ~~~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m6[0m:[93m21[0m - [91merror[0m[90m TS1068: [0mUnexpected token. A constructor, method, accessor, or property was expected.
+
+[7m6[0m   folders: string[];> => {
+[7m [0m [91m                    ~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m6[0m:[93m23[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m6[0m   folders: string[];> => {
+[7m [0m [91m                      ~~[0m
+[96msrc/helpers/VariableExtractor.ts[0m:[93m162[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m162[0m }
+[7m   [0m [91m~[0m
+
+    at createTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:863:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1379:34
+    at Object.compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1458:13)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+2023-02-10 16:05:59 error: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1485:16)
+    at listenInCluster (node:net:1533:12)
+    at Server.listen (node:net:1621:7)
+    at Function.listen (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/express/lib/application.js:635:24)
+    at App.listen (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:40:14)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+2023-02-10 16:06:30 error: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1485:16)
+    at listenInCluster (node:net:1533:12)
+    at Server.listen (node:net:1621:7)
+    at Function.listen (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/express/lib/application.js:635:24)
+    at App.listen (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:40:14)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+2023-02-10 17:06:58 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/pipeline.repository.ts[0m:[93m110[0m:[93m33[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m110[0m     } elseif (lang == 'nodejs') {
+[7m   [0m [91m                                ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/pipeline.repository.ts[0m:[93m110[0m:[93m33[0m - [91merror[0m[90m TS1005: [0m';' expected.
+
+[7m110[0m     } elseif (lang == 'nodejs') {
+[7m   [0m [91m                                ~[0m
+
+    at createTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:863:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1379:34
+    at Object.compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1458:13)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+2023-02-10 17:31:50 error: uncaughtException: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+Error: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+    at Function.getGraphQLOutputType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:519:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:395:31
+    at Array.reduce (<anonymous>)
+    at Function.generateHandlerFields (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:390:25)
+    at Function.buildRootMutationType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:355:26)
+    at Function.generateFromMetadataSync (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:33:28)
+    at Function.generateFromMetadata (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:16:29)
+    at buildSchema (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/utils/buildSchema.js:10:61)
+    at App.initApolloServer (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:115:37)
+    at new App (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:33:10)
+2023-02-10 17:31:59 error: uncaughtException: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+Error: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+    at Function.getGraphQLOutputType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:519:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:395:31
+    at Array.reduce (<anonymous>)
+    at Function.generateHandlerFields (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:390:25)
+    at Function.buildRootMutationType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:355:26)
+    at Function.generateFromMetadataSync (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:33:28)
+    at Function.generateFromMetadata (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:16:29)
+    at buildSchema (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/utils/buildSchema.js:10:61)
+    at App.initApolloServer (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:115:37)
+    at new App (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:33:10)
+2023-02-10 17:32:40 error: uncaughtException: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+Error: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+    at Function.getGraphQLOutputType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:519:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:395:31
+    at Array.reduce (<anonymous>)
+    at Function.generateHandlerFields (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:390:25)
+    at Function.buildRootMutationType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:355:26)
+    at Function.generateFromMetadataSync (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:33:28)
+    at Function.generateFromMetadata (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:16:29)
+    at buildSchema (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/utils/buildSchema.js:10:61)
+    at App.initApolloServer (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:115:37)
+    at new App (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:33:10)
+2023-02-10 17:32:51 error: uncaughtException: pipelineResolver is not defined
+ReferenceError: pipelineResolver is not defined
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts:9:50)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at phase4 (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/bin.ts:649:14)
+    at bootstrap (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/bin.ts:95:10)
+2023-02-10 17:33:04 error: uncaughtException: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+Error: Cannot determine GraphQL output type for 'createPipelineTemplate' of 'pipelineResolver' class. Is the value, that is used as its TS type or explicit type, decorated with a proper decorator or is it a proper output value?
+    at Function.getGraphQLOutputType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:519:19)
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:395:31
+    at Array.reduce (<anonymous>)
+    at Function.generateHandlerFields (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:390:25)
+    at Function.buildRootMutationType (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:355:26)
+    at Function.generateFromMetadataSync (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:33:28)
+    at Function.generateFromMetadata (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/schema/schema-generator.js:16:29)
+    at buildSchema (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/type-graphql/dist/utils/buildSchema.js:10:61)
+    at App.initApolloServer (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:115:37)
+    at new App (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:33:10)
+2023-02-10 17:47:13 error: request to https://api.bitbucket.org/2.0/workspaces?pagelen=30 failed, reason: getaddrinfo ENOTFOUND api.bitbucket.org
+2023-02-10 17:50:35 error: Cannot return null for non-nullable field Workspace.name.
+2023-02-10 17:52:18 error: Cannot return null for non-nullable field Workspace.slug.
+2023-02-10 17:53:01 error: Cannot return null for non-nullable field Workspace.name.
+2023-02-10 18:24:17 error: uncaughtException: Unauthorized
+HTTPError: Unauthorized
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/bitbucket/src/request/fetch-wrapper.ts:48:17
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:76:31
+2023-02-10 18:24:57 error: uncaughtException: Unauthorized
+HTTPError: Unauthorized
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/bitbucket/src/request/fetch-wrapper.ts:48:17
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:76:31
+2023-02-10 18:25:16 error: uncaughtException: Unauthorized
+HTTPError: Unauthorized
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/bitbucket/src/request/fetch-wrapper.ts:48:17
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/app.ts:76:31
+2023-02-10 23:39:00 error: Not Found
+2023-02-10 23:39:00 error: uncaughtException: Bad Request
+HTTPError: Bad Request
+    at /Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/bitbucket/src/request/fetch-wrapper.ts:48:17
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2023-02-10 23:52:11 error: uncaughtException: ß is not defined
+ReferenceError: ß is not defined
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/src/server.ts:9:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at phase4 (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/bin.ts:649:14)
+    at bootstrap (/Users/mac/Documents/www/K8sPipeline/PipelineBackend/node_modules/ts-node/src/bin.ts:95:10)

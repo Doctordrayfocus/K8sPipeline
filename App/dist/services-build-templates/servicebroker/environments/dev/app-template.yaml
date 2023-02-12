@@ -1,0 +1,12 @@
+apiVersion: template.k8spipeline.io/v1
+kind: K8sAppTemplate
+metadata:
+  name: servicebroker
+spec:
+  serviceName: 'servicebroker'
+  environment: 'dev'
+  deploymentReplicas: 1
+  imageVersion: '0.1'
+  configsToUse: ''
+  httpsDomain1: ''
+

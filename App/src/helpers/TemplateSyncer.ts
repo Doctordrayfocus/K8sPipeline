@@ -11,7 +11,7 @@ export default class TemplateSyncer {
 
     // sync repo in interval
     setInterval(async () => {
-      shell.cd(configFolder).exec(`git pull`);
+      shell.cd(configFolder).exec(`git pull origin main`);
     }, 1000 * parseInt(TEMPLATE_SYNC_INTERVAL));
   };
 }
