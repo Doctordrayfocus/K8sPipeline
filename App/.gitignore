@@ -3,3 +3,4 @@ src/templates
 .env.development.local
 .env.production.local
 dist
+package-lock.json
