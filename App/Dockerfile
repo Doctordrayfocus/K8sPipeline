@@ -6,7 +6,7 @@ FROM hoosin/alpine-nginx-nodejs:latest
 RUN apk add --no-cache git
 
 # install docker
-RUN apk add docker docker-compose
+RUN apk add docker
 
 RUN apk add --update nodejs npm
 
