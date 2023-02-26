@@ -22,9 +22,12 @@ RUN cd /usr/src/app/frontend && npm install && npm run build
 ## Build server
 RUN cd /usr/src/app && npm install && npm run build
 
+## install app server
+RUN npm install -g serve
+
 
 EXPOSE 8080
-CMD [ "npm", "run", "prod"]
+CMD [ "npm", "run", "prod" , "&", "serve", "-s", "/usr/src/app/frontend/dist"]
 
 # We need to add our NGINX template to the container for startup,
 # and configuration.
