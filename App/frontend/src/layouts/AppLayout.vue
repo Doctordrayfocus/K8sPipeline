@@ -5,24 +5,24 @@
 </template>
 
 <script lang="ts">
-import AppLayoutDefault from "./AppLayoutDefault.vue";
-import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
-import Dashboard from "./Dashboard.vue";
+import AppLayoutDefault from './AppLayoutDefault.vue';
+import { shallowRef, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import Dashboard from './Dashboard.vue';
 
 export default {
-  name: "AppLayout",
+  name: 'AppLayout',
   setup() {
-    const layout = ref<any>();
+    const layout = shallowRef<any>();
     const route = useRoute();
 
     watch(
       () => route.meta,
-      async (meta) => {
+      async meta => {
         try {
           if (meta.layout) {
             const component = meta.layout;
-            if (component == "Dashboard") {
+            if (component == 'Dashboard') {
               layout.value = Dashboard;
             }
           }
@@ -30,7 +30,7 @@ export default {
           layout.value = AppLayoutDefault;
         }
       },
-      { immediate: true }
+      { immediate: true },
     );
     return { layout };
   },

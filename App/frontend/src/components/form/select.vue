@@ -1,11 +1,6 @@
 <template>
   <div :class="`flex flex-col space-y-2 ${defaultSize} `">
-    <bp-normal-text
-      v-if="hasTitle"
-      :customClass="`!font-semibold ${
-        labelStyle ? labelStyle : ''
-      } !text-lightBlack`"
-    >
+    <bp-normal-text v-if="hasTitle" :customClass="`!font-semibold ${labelStyle ? labelStyle : ''} !text-lightBlack`">
       <slot name="title" />
       <!-- <sup class="text-primaryOrange px-1">*</sup> -->
     </bp-normal-text>
@@ -38,12 +33,7 @@
         class="w-full flex flex-row whitespace-nowrap overflow-x-auto scrollbar-hide space-x-2 focus"
         :id="`mutipleItemContainer` + tabIndex"
       >
-        <bp-badge
-          :color="'newgray'"
-          v-for="(option, index) in selectedItems"
-          :key="index"
-          >{{ getSelectedOption(option) }}</bp-badge
-        >
+        <bp-badge :color="'newgray'" v-for="(option, index) in selectedItems" :key="index">{{ getSelectedOption(option) }}</bp-badge>
       </div>
       <span class="pr-1">
         <bp-icon
@@ -61,15 +51,8 @@
         @click.stop="null"
         class="w-full flex flex-col abolute top-[101%] left-0 bg-white z-50 max-h-[300px] overflow-y-auto rounded-md pb-3 px-3 shadow-md absolute"
       >
-        <div
-          class="w-full py-2 sticky top-0 bg-white flex flex-row items-center justify-between"
-          v-if="autoComplete"
-        >
-          <bp-text-field
-            placeholder="Search"
-            v-model="searchValue"
-            custom-class="w-full !border-none !border-b-[1px] !bg-[whitesmoke]"
-          >
+        <div class="w-full py-2 sticky top-0 bg-white flex flex-row items-center justify-between" v-if="autoComplete">
+          <bp-text-field placeholder="Search" v-model="searchValue" custom-class="w-full !border-none !border-b-[1px] !bg-[whitesmoke]">
           </bp-text-field>
           <span
             class="pl-3 cursor-pointer"
@@ -81,10 +64,7 @@
             <bp-icon :name="'cross-circle'" :customClass="'h-[19px]'" />
           </span>
         </div>
-        <div
-          class="w-full flex flex-row py-2 bg-white"
-          v-if="!autoComplete"
-        ></div>
+        <div class="w-full flex flex-row py-2 bg-white" v-if="!autoComplete"></div>
         <div
           class="py-3 px-3 w-full flex flex-row items-center hover:bg-gray-100 cursor-pointer"
           v-for="(item, index) in searchResult"
@@ -93,12 +73,7 @@
         >
           <template v-if="isMultiple">
             <div class="w-full flex flex-row space-x-3 items-center">
-              <bp-icon
-                :name="
-                  itemIsSelected(item.key) ? 'checkbox-active' : 'checkbox'
-                "
-                custom-class="h-[16px]"
-              />
+              <bp-icon :name="itemIsSelected(item.key) ? 'checkbox-active' : 'checkbox'" custom-class="h-[16px]" />
               <bp-normal-text>
                 {{ item.value }}
               </bp-normal-text>
@@ -114,16 +89,16 @@
 </template>
 
 <script lang="ts">
-import { capitalize, defineComponent, onMounted, ref, toRef, watch } from "vue";
-import BpIcon from "../common/icon.vue";
-import BpNormalText from "../typography/normalText.vue";
-import BpTextField from "./textField.vue";
-import BpBadge from "@/components/common/badge.vue";
-import { SelectOption } from "@/modules/types";
-import { Logic } from "@/composables";
+import { capitalize, defineComponent, onMounted, ref, toRef, watch } from 'vue';
+import BpIcon from '../common/icon.vue';
+import BpNormalText from '../typography/normalText.vue';
+import BpTextField from './textField.vue';
+import BpBadge from '@/components/common/badge.vue';
+import { SelectOption } from '@/modules/types';
+import { Logic } from '@/composables';
 
 export default defineComponent({
-  name: "BpSelect",
+  name: 'BpSelect',
   components: {
     BpIcon,
     BpNormalText,
@@ -137,22 +112,22 @@ export default defineComponent({
     },
     placeholder: {
       type: String,
-      default: "",
+      default: '',
     },
     options: {
       type: Array as () => SelectOption[],
     },
     paddings: {
       type: String,
-      default: "py-4 px-3",
+      default: 'py-4 px-3',
     },
     padding: {
       type: String,
-      default: "py-4 px-3",
+      default: 'py-4 px-3',
     },
     customClass: {
       type: String,
-      default: "",
+      default: '',
     },
     defaultValues: {
       type: Array as () => string[],
@@ -174,7 +149,7 @@ export default defineComponent({
     },
     defaultSize: {
       type: String,
-      default: "w-full",
+      default: 'w-full',
     },
     autoComplete: {
       type: Boolean,
@@ -190,11 +165,11 @@ export default defineComponent({
     },
     actionLabel: {
       type: String,
-      default: "Done",
+      default: 'Done',
     },
     labelStyle: {
       type: String,
-      default: "",
+      default: '',
     },
     disablePropWatch: {
       type: Boolean,
@@ -208,7 +183,7 @@ export default defineComponent({
       type: Object as () => any,
     },
   },
-  emits: ["update:modelValue", "OnOptionSelected", "OnSearch"],
+  emits: ['update:modelValue', 'OnOptionSelected', 'OnSearch'],
   setup(props: any, context: any) {
     const isFocused = ref(false);
     const showOption = ref(false);
@@ -225,11 +200,11 @@ export default defineComponent({
 
     const selectedKey = ref();
 
-    const valueData = ref("");
+    const valueData = ref('');
 
-    const textValue = ref("");
+    const textValue = ref('');
 
-    const searchValue = ref("");
+    const searchValue = ref('');
 
     const selectOptions = ref<any[]>([]);
 
@@ -252,9 +227,9 @@ export default defineComponent({
         searchResult.value.forEach((item: any) => {
           selectOptions.value.push({
             key: item.key,
-            value: `${item.value}${props.withKey ? ` (${item.key})` : ""}`,
+            value: `${item.value}${props.withKey ? ` (${item.key})` : ''}`,
             hasIcon: item.hasIcon ? item.hasIcon : false,
-            extras: item.extras ? item.extras : "",
+            extras: item.extras ? item.extras : '',
             isImage: item.isImage ? item.isImage : false,
             isForm: item.isForm ? item.isForm : false,
             formField: item.formField ? item.formField : [],
@@ -286,7 +261,7 @@ export default defineComponent({
 
     onMounted(() => {
       if (props.defaultValues.length > 0) {
-        const defaultVaule = toRef(props, "defaultValues");
+        const defaultVaule = toRef(props, 'defaultValues');
         selectedItems.value = defaultVaule.value;
       }
       if (props.options) {
@@ -321,7 +296,7 @@ export default defineComponent({
     const selectValue = (option: any) => {
       if (!option) return;
       if (props.autoComplete) {
-        context.emit("OnOptionSelected", option.key);
+        context.emit('OnOptionSelected', option.key);
 
         isFocused.value = false;
         showOption.value = false;
@@ -334,9 +309,9 @@ export default defineComponent({
           textValue.value = option.value;
         }
 
-        context.emit("update:modelValue", option.key);
+        context.emit('update:modelValue', option.key);
 
-        document.getElementById("container" + tabIndex)?.blur();
+        document.getElementById('container' + tabIndex)?.blur();
 
         if (!props.hasConfirmation) {
           ShowSelectModal.value = false;
@@ -349,11 +324,11 @@ export default defineComponent({
             return key != option.key;
           });
 
-          document.getElementById("mutipleItemContainer" + tabIndex)?.scrollTo({
+          document.getElementById('mutipleItemContainer' + tabIndex)?.scrollTo({
             left: 8000,
           });
 
-          context.emit("OnOptionSelected", {
+          context.emit('OnOptionSelected', {
             selectedItems: selectedItems.value,
             extraData: props.extraData,
           });
@@ -363,17 +338,17 @@ export default defineComponent({
 
         selectedItems.value.push(option.key);
 
-        document.getElementById("mutipleItemContainer" + tabIndex)?.scrollTo({
+        document.getElementById('mutipleItemContainer' + tabIndex)?.scrollTo({
           left: 8000,
         });
         // context.emit("update:modelValue", selectedItems.value);
-        context.emit("OnOptionSelected", {
+        context.emit('OnOptionSelected', {
           selectedItems: selectedItems.value,
           extraData: props.extraData,
         });
       } else {
-        context.emit("update:modelValue", option.key);
-        context.emit("OnOptionSelected", option.key);
+        context.emit('update:modelValue', option.key);
+        context.emit('OnOptionSelected', option.key);
         if (props.withKey) {
           valueData.value = option.key;
         } else {
@@ -383,7 +358,7 @@ export default defineComponent({
         isFocused.value = false;
         showOption.value = false;
 
-        document.getElementById("container" + tabIndex)?.blur();
+        document.getElementById('container' + tabIndex)?.blur();
 
         if (!props.hasConfirmation) {
           ShowSelectModal.value = false;
@@ -401,10 +376,7 @@ export default defineComponent({
 
     const searchOption = () => {
       if (props.autoComplete && searchValue.value) {
-        searchResult.value = Logic.Common.searchArray(
-          OptionRef.value,
-          capitalize(searchValue.value)
-        );
+        searchResult.value = Logic.Common.searchArray(OptionRef.value, capitalize(searchValue.value));
       } else {
         searchResult.value = props.options;
       }
