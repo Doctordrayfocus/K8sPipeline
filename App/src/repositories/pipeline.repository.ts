@@ -9,6 +9,7 @@ import path from 'path';
 import { EntityRepository } from 'typeorm';
 import shell from 'shelljs';
 import AuthStrategyRepository from './authStrategy.repository';
+import { APP_URL } from '@/config';
 
 @EntityRepository(PipelineEntity)
 export default class PipelineRepository {
@@ -67,7 +68,7 @@ export default class PipelineRepository {
         workspace: workspaceId,
         _body: {
           name: 'K8sPipelineHook',
-          url: 'http://localhost:3000/bitbucket-webhook',
+          url: `https://${APP_URL}/bitbucket-webhook`,
           active: true,
           events: ['repo:push'],
         },

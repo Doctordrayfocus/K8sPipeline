@@ -25,3 +25,4 @@ data:
   TEMPLATE_CONFIG_REPO_URL: "{{ .Values.pipelineApp.buildTemplateRepository }}"
   TEMPLATE_SYNC_INTERVAL: "{{ .Values.pipelineApp.buildTemplateSyncInterval }}"
   DOCKER_REGISTRY: "{{ .Values.deployController.dockerRegistry }}"
+  APP_URL: "{{ .Values.pipelineApp.appUrl }}"

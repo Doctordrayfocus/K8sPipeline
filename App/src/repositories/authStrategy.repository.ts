@@ -2,7 +2,15 @@ import { AuthStrategyEntity } from '@/entities/authStrategy.entity';
 import { EntityRepository } from 'typeorm';
 import passport from 'passport';
 import { GitLabStrategy as GitHubStrategy } from 'passport-github2';
-import { BITBUCKET_CLIENT_ID, BITBUCKET_CLIENT_SECRET, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITLAB_APP_ID, GITLAB_APP_SECRET } from '@/config';
+import {
+  APP_URL,
+  BITBUCKET_CLIENT_ID,
+  BITBUCKET_CLIENT_SECRET,
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
+  GITLAB_APP_ID,
+  GITLAB_APP_SECRET,
+} from '@/config';
 import { AuthStrategy } from '@/interfaces/authStrategy.inteface';
 import { Strategy as GitLabStrategy } from 'passport-gitlab2';
 import { Strategy as BitbucketStrategy } from 'passport-bitbucket-oauth2';
@@ -49,7 +57,7 @@ export default class AuthStrategyRepository {
         {
           clientID: GITHUB_CLIENT_ID,
           clientSecret: GITHUB_CLIENT_SECRET,
-          callbackURL: 'http://127.0.0.1:3000/auth/github/callback',
+          callbackURL: `https://${APP_URL}/auth/github/callback`,
         },
         (accessToken, refreshToken, profile) => {
           this.saveAuthStrategy(accessToken, refreshToken, profile.id, 'github');
@@ -64,7 +72,7 @@ export default class AuthStrategyRepository {
         {
           clientID: GITLAB_APP_ID,
           clientSecret: GITLAB_APP_SECRET,
-          callbackURL: 'http://localhost:3000/auth/gitlab/callback',
+          callbackURL: `https://${APP_URL}/auth/gitlab/callback`,
         },
         (accessToken, refreshToken, profile) => {
           this.saveAuthStrategy(accessToken, refreshToken, profile.id, 'gitlab');
@@ -78,7 +86,7 @@ export default class AuthStrategyRepository {
       {
         clientID: BITBUCKET_CLIENT_ID,
         clientSecret: BITBUCKET_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3000/auth/bitbucket/callback',
+        callbackURL: `http://${APP_URL}/auth/bitbucket/callback`,
       },
       (accessToken, refreshToken, profile) => {
         this.saveAuthStrategy(accessToken, refreshToken, profile.username, 'bitbucket');
