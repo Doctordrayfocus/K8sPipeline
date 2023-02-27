@@ -86,7 +86,7 @@ export default class AuthStrategyRepository {
       {
         clientID: BITBUCKET_CLIENT_ID,
         clientSecret: BITBUCKET_CLIENT_SECRET,
-        callbackURL: `http://${APP_URL}/auth/bitbucket/callback`,
+        callbackURL: `https://${APP_URL}/auth/bitbucket/callback`,
       },
       (accessToken, refreshToken, profile) => {
         this.saveAuthStrategy(accessToken, refreshToken, profile.username, 'bitbucket');
