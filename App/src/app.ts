@@ -95,6 +95,10 @@ class App {
 
       this.app.get('/auth/bitbucket', authStrategyRepo.authenticateStategy('bitbucket'));
 
+      this.app.post('/bitbucket-webhook', (req, res) => {
+        console.log(req.body);
+      });
+
       // this.app.get('/auth/giblab', authStrategyRepo.authenticateStategy('gitlab'));
 
       // this.app.get('/auth/github', authStrategyRepo.authenticateStategy('github'));
