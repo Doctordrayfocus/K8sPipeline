@@ -54,7 +54,7 @@ class App {
     this.initApolloServer();
     this.initializeErrorHandling();
     this.registerRestRoute();
-    // this.syncAppTemplate();
+    this.syncAppTemplate();
   }
 
   public async listen() {
@@ -93,25 +93,25 @@ class App {
       const authStrategyRepo = new AuthStrategyRepository();
       const pipelineRepo = new PipelineRepository();
 
-      // this.app.get('/auth/bitbucket', authStrategyRepo.authenticateStategy('bitbucket'));
+      this.app.get('/auth/bitbucket', authStrategyRepo.authenticateStategy('bitbucket'));
 
       // this.app.get('/auth/giblab', authStrategyRepo.authenticateStategy('gitlab'));
 
       // this.app.get('/auth/github', authStrategyRepo.authenticateStategy('github'));
 
-      // this.app.get('/auth/bitbucket/callback', authStrategyRepo.handleGithubCallback('bitbucket'), (req, res) => {
-      //   res.sendFile(__dirname + '/static/close.html');
-      // });
+      this.app.get('/auth/bitbucket/callback', authStrategyRepo.handleGithubCallback('bitbucket'), (req, res) => {
+        res.sendFile(__dirname + '/static/close.html');
+      });
 
-      // this.app.get('/testing', async (req, res) => {
-      //   // return pipelineRepo.getRepositoryBranches('cc-portfolio', 'RoofWallet', res);
-      //   try {
-      //     const pipelineData = await pipelineRepo.getPipelines();
-      //     return res.send(pipelineData);
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // });
+      this.app.get('/testing', async (req, res) => {
+        // return pipelineRepo.getRepositoryBranches('cc-portfolio', 'RoofWallet', res);
+        try {
+          const pipelineData = await pipelineRepo.getPipelines();
+          return res.send(pipelineData);
+        } catch (error) {
+          console.log(error);
+        }
+      });
 
       // this.app.post('/auth/giblab/callback', authStrategyRepo.handleGithubCallback('gitlab'), (req, res) => {
       //   res.sendFile('../static/close.html');
