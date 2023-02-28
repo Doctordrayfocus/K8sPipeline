@@ -84,7 +84,7 @@ class App {
 
     global.SocketServer = this.socketIo;
 
-    this.socketIo.on('connection', () => {
+    this.socketIo.once('connection', () => {
       console.log('a user connected');
     });
   };
