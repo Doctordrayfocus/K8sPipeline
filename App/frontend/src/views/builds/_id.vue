@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        <div class="col-span-9 w-full flex flex-col h-full bg-gray-300 rounded-md px-3 py-3" v-if="content">
+        <div class="col-span-9 w-full flex flex-col h-full bg-gray-300 rounded-md px-3 py-3">
           <bp-terminal :content="content" />
         </div>
       </div>
