@@ -8,7 +8,6 @@ import cors from 'cors';
 import express from 'express';
 // import helmet from 'helmet';
 // import hpp from 'hpp';
-import { createConnection } from 'typeorm';
 import { NODE_ENV, PORT, ORIGIN, CREDENTIALS } from './config';
 import { dbConnection } from './databases';
 import errorMiddleware from './middlewares/error.middleware';
@@ -146,12 +145,13 @@ class App {
   }
 
   private connectToDatabase() {
-    createConnection(dbConnection)
+    dbConnection
+      .initialize()
       .then(() => {
-        console.log('DB connection successful');
+        console.log('Data Source has been initialized!');
       })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        console.error('Error during Data Source initialization', err);
       });
   }
 

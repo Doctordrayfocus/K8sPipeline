@@ -4,4 +4,4 @@ src/templates
 .env.production.local
 dist
 package-lock.json
-src/services-build-templates/
+services-build-templates

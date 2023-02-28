@@ -1,3 +1,4 @@
+import { dbConnection } from './../databases/index';
 import { PipelineBuildEntity } from './../entities/pipelineBuild.entity';
 import { CreatePipelineDto } from './../dtos/pipeline.dto';
 import { AuthStrategyEntity } from '../entities/authStrategy.entity';
@@ -11,6 +12,7 @@ import { EntityRepository } from 'typeorm';
 import shell from 'shelljs';
 import AuthStrategyRepository from './authStrategy.repository';
 import { APP_URL, DOCKER_REGISTRY } from '../config';
+import { promises as fs } from 'fs';
 
 @EntityRepository(PipelineEntity)
 export default class PipelineRepository {
@@ -115,34 +117,45 @@ export default class PipelineRepository {
   };
 
   public updatePipelineBuild = async (data: BuildUpdateData) => {
-    const buildData = await PipelineBuildEntity.findOne({
-      where: {
-        uuid: data.uuid,
-      },
-    });
+    try {
+      const buildRepository = dbConnection.getRepository(PipelineBuildEntity);
 
-    PipelineBuildEntity.getRepository()
-      .createQueryBuilder()
-      .update()
-      .set({
-        status: data.status,
-        ended_at: new Date(),
-        content: buildData.content + data.content,
-      })
-      .where('uuid = :uuid', {
-        uuid: data.uuid,
-      })
-      .execute();
+      buildRepository
+        .findOneBy({
+          uuid: data.uuid,
+        })
+        .then(buildData => {
+          if (buildData) {
+            buildData.status = data.status;
+            buildData.ended_at = new Date();
+            buildData.content = buildData.content + data.content;
 
-    global.SocketServer.emit(`status-${data.uuid}`, {
-      status: data.status,
-      percentageCompleted: data.percentageCompleted,
-    });
+            buildRepository
+              .save(buildData)
+              .then()
+              .catch(error => {
+                console.log(error);
+              });
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+      if (data.percentageCompleted) {
+        global.SocketServer.emit(`status-${data.uuid}`, {
+          status: data.status,
+          percentageCompleted: data.percentageCompleted,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   public runBuildPipeline = async (build: PipelineBuild, pipeline: PipelineEntity, commitData: CommitData, template: string) => {
     // run pipeline
-    const buildTemplateFolder = path.join(__dirname, `../services-build-templates/${pipeline.repo_id}`);
+    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates/${pipeline.repo_id}`);
 
     const repoVariables = `--service=${pipeline.repo_id} --version=${build.id} --docker_registry=${DOCKER_REGISTRY} --env=${
       commitData.branch
@@ -152,53 +165,107 @@ export default class PipelineRepository {
       return `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30`;
     };
 
-    const updateBuildProgress = (data: BuildUpdateData) => {
-      return `curl --location 'http://localhost:8080/update-build' \
-      --form 'uuid="${data.uuid}"' \
-      --form 'status="${data.status}"' \
-      --form 'percentageCompleted="${data.percentageCompleted}"'`;
+    const updateBuildProgress = (data: string) => {
+      return `curl --location --request POST 'http://localhost:8080/update-build' \
+      --header 'Content-Type: application/json' \
+      --data '${data}'`;
     };
 
     const childProcess = shell.cd(buildTemplateFolder).exec(
-      `${earthly()} +setup --no-cache ${repoVariables}  && \
-      ${updateBuildProgress({
-        status: 'in_progress',
-        uuid: build.uuid,
-        percentageCompleted: 30,
-      })} && \
-      ${earthly()} +build --push ${repoVariables} && \
-      ${updateBuildProgress({
-        status: 'in_progress',
-        uuid: build.uuid,
-        percentageCompleted: 60,
-      })} && \
-      ${earthly()} +deploy --no-cache ${repoVariables} && \
-      ${updateBuildProgress({
-        status: 'completed',
-        uuid: build.uuid,
-        percentageCompleted: 100,
-      })}
-      `,
+      `${earthly()} +setup --no-cache ${repoVariables}  // && \
+        ${updateBuildProgress(
+          JSON.stringify({
+            status: 'in_progress',
+            uuid: build.uuid,
+            percentageCompleted: 30,
+          }),
+        )} && \
+        ${earthly()} +build --push ${repoVariables} && \
+        ${updateBuildProgress(
+          JSON.stringify({
+            status: 'in_progress',
+            uuid: build.uuid,
+            percentageCompleted: 60,
+          }),
+        )} && \
+        ${earthly()} +deploy --no-cache ${repoVariables} && \
+        ${updateBuildProgress(
+          JSON.stringify({
+            status: 'completed',
+            uuid: build.uuid,
+            percentageCompleted: 100,
+          }),
+        )}`,
       {
         async: true,
+        silent: true,
       },
     );
 
-    childProcess.on('error', () => {
-      this.updatePipelineBuild({
-        percentageCompleted: 100,
-        status: 'failed',
-        uuid: build.uuid,
-      });
+    // && \
+    //   ${updateBuildProgress({
+    //     status: 'in_progress',
+    //     uuid: build.uuid,
+    //     percentageCompleted: 30,
+    //   })} && \
+    //   ${earthly()} +build --push ${repoVariables} && \
+    //   ${updateBuildProgress({
+    //     status: 'in_progress',
+    //     uuid: build.uuid,
+    //     percentageCompleted: 60,
+    //   })} && \
+    //   ${earthly()} +deploy --no-cache ${repoVariables} && \
+    //   ${updateBuildProgress({
+    //     status: 'completed',
+    //     uuid: build.uuid,
+    //     percentageCompleted: 100,
+    //   })}
+
+    childProcess.stdout.on('data', async data => {
+      global.SocketServer.emit(`${build.uuid}`, data);
+      await fs.appendFile(path.join(__dirname, `../../build_logs/${build.uuid}.log`), data);
     });
 
-    childProcess.on('data', function (data) {
-      global.SocketServer.emit(`${build.uuid}`, data);
-      this.updatePipelineBuild({
-        status: 'in_progress',
-        uuid: build.uuid,
-        content: data,
+    childProcess.stderr.on('error', async () => {
+      const buildLogs = await fs.readFile(path.join(__dirname, `../../build_logs/${build.uuid}.log`), 'base64');
+      const stringifiedData = JSON.stringify({
+        uuid: build.uuid || '',
+        status: 'failed',
+        content: buildLogs,
       });
+      shell.cd(buildTemplateFolder).exec(
+        `${updateBuildProgress(stringifiedData)}
+        `,
+        {
+          async: true,
+          silent: true,
+        },
+      );
+
+      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+    });
+
+    childProcess.stderr.on('close', async () => {
+      const buildLogs = await fs.readFile(path.join(__dirname, `../../build_logs/${build.uuid}.log`), 'base64');
+      const stringifiedData = JSON.stringify({
+        uuid: build.uuid || '',
+        status: 'failed',
+        content: buildLogs,
+      });
+      shell.cd(buildTemplateFolder).exec(
+        `${updateBuildProgress(stringifiedData)}
+        `,
+        {
+          async: true,
+          silent: true,
+        },
+      );
+
+      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+    });
+
+    childProcess.stdout.on('end', async () => {
+      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
     });
   };
 
@@ -223,7 +290,7 @@ export default class PipelineRepository {
   };
 
   public setupServiceTemplate = (repoSlug: string, lang: string, branches: string[]) => {
-    const buildTemplateFolder = path.join(__dirname, `../services-build-templates`);
+    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates`);
 
     const childProcess = shell
       .cd(buildTemplateFolder)
@@ -233,10 +300,11 @@ export default class PipelineRepository {
         )}+install --service=${repoSlug} --envs=${branches.toString()}`,
         {
           async: true,
+          silent: true,
         },
       );
 
-    childProcess.on('data', function (data) {
+    childProcess.stdout.on('data', function (data) {
       global.SocketServer.emit(`${repoSlug}`, data);
     });
   };
@@ -328,6 +396,15 @@ export default class PipelineRepository {
         uuid: buildUuid,
       },
     });
+    if (!pipelineBuildData.content) {
+      fs.readFile(path.join(__dirname, `../../build_logs/${pipelineBuildData.uuid}.log`), 'base64')
+        .then(data => {
+          pipelineBuildData.content = data;
+        })
+        .catch(() => {
+          pipelineBuildData.content = '';
+        });
+    }
     return pipelineBuildData;
   };
 

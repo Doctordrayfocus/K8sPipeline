@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        <div class="col-span-9 w-full flex flex-col h-full bg-gray-300 rounded-md px-3 py-3">
+        <div class="col-span-9 w-full flex flex-col h-full bg-gray-300 rounded-md px-3 py-3" v-if="content">
           <bp-terminal :content="content" />
         </div>
       </div>
@@ -64,18 +64,22 @@ export default defineComponent({
 
     const content = ref('');
 
-    content.value = buildData?.content || '';
+    content.value = buildData?.content ? Logic.Common.base64ToUtf8(buildData?.content || '') : '';
 
-    const builds = [
-      {
-        title: buildData?.title || '',
-        branch: buildData?.branch || '',
-        color: Logic.Pipeline.pipelineStatusLabel(buildData?.status || '').color,
-        duration: Logic.Common.timeFromNow(parseInt(buildData?.started_at || '0')),
-        percentage: '40',
-        status: buildData?.status || '',
-      },
-    ];
+    const builds = ref({
+      title: buildData?.title || '',
+      branch: buildData?.branch || '',
+      color: Logic.Pipeline.pipelineStatusLabel(buildData?.status || '').color,
+      duration: Logic.Common.timeFromNow(parseInt(buildData?.started_at || '0')),
+      percentage: '10',
+      status: Logic.Pipeline.pipelineStatusLabel(buildData?.status || '').status,
+    });
+
+    Logic.Common.socketIo.on(`status-${buildData?.uuid}`, (data: { status: string; percentageCompleted: number }) => {
+      builds.value.status = Logic.Pipeline.pipelineStatusLabel(data.status || '').status;
+      builds.value.color = Logic.Pipeline.pipelineStatusLabel(data.status).color;
+      builds.value.percentage = data.percentageCompleted.toString();
+    });
 
     Logic.Common.socketIo.on(`${buildData?.uuid}`, data => {
       content.value = data;

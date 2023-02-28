@@ -1,13 +1,9 @@
 import { Logic } from './index';
-import { FetchRule, LoaderSetup } from "@/modules/types";
-import moment from "moment";
-import  { io } from 'socket.io-client';
-import { reactive } from "vue";
-import {
-  NavigationGuardNext,
-  RouteLocationNormalized,
-  Router,
-} from "vue-router";
+import { FetchRule, LoaderSetup } from '@/modules/types';
+import moment from 'moment';
+import { io } from 'socket.io-client';
+import { reactive } from 'vue';
+import { NavigationGuardNext, RouteLocationNormalized, Router } from 'vue-router';
 
 export default class Common {
   constructor() {
@@ -18,7 +14,7 @@ export default class Common {
 
   public loadingState = false;
 
-  public apiUrl = ''
+  public apiUrl = '';
 
   public momentInstance;
 
@@ -31,7 +27,7 @@ export default class Common {
     transports: ['websocket'],
     agent: false,
     upgrade: false,
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
   });
 
   public loaderSetup: LoaderSetup = reactive({
@@ -39,11 +35,11 @@ export default class Common {
     useModal: false,
     hasError: false,
     loading: false,
-    message: "",
-    ctaText: "",
+    message: '',
+    ctaText: '',
     ctaFunction: undefined,
-    icon: "success",
-    title: "",
+    icon: 'success',
+    title: '',
   });
 
   public SetRouter = (router: Router) => {
@@ -55,31 +51,35 @@ export default class Common {
   };
 
   public goBack = () => {
-    window.history.length > 1 ? this.router?.go(-1) : this.router?.push("/");
+    window.history.length > 1 ? this.router?.go(-1) : this.router?.push('/');
   };
 
   public SetApiUrl = (apiUrl: string) => {
-    this.apiUrl = apiUrl
-  }
+    this.apiUrl = apiUrl;
+  };
 
   public listenForSocketConnection = () => {
-    this.socketIo.on('connection', (socket) => {
+    this.socketIo.on('connection', socket => {
       console.log('a user connected');
       socket.on('disconnect', () => {
         console.log('user disconnected');
       });
     });
-  }
+  };
+
+  public base64ToUtf8 = (data: string) => {
+    return decodeURIComponent(escape(window.atob(data)));
+  };
 
   public debounce = (
     method = () => {
       //
     },
-    delay = 500
+    delay = 500,
   ) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    if (typeof window.LIT !== "undefined") {
+    if (typeof window.LIT !== 'undefined') {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       clearTimeout(window.LIT);
@@ -124,12 +124,12 @@ export default class Common {
   };
 
   private isString = (x: any) => {
-    return Object.prototype.toString.call(x) === "[object String]";
+    return Object.prototype.toString.call(x) === '[object String]';
   };
 
   public searchArray = (arr: any[], searchKey: string) => {
-    return arr.filter((obj) => {
-      return Object.keys(obj).some((key) => {
+    return arr.filter(obj => {
+      return Object.keys(obj).some(key => {
         return this.isString(obj[key]) ? obj[key].includes(searchKey) : false;
       });
     });
@@ -140,9 +140,7 @@ export default class Common {
   };
 
   public countDownTime = (endTime: number) => {
-    return moment(this.momentInstance(endTime).diff(moment.now())).format(
-      "mm:ss"
-    );
+    return moment(this.momentInstance(endTime).diff(moment.now())).format('mm:ss');
   };
 
   public timeFromNow = (time: number) => {
@@ -157,9 +155,8 @@ export default class Common {
   };
 
   public makeid = (length: number) => {
-    let result = "";
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
     for (let i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -167,11 +164,7 @@ export default class Common {
     return result;
   };
 
-  public preFetchRouteData = (
-    routeTo: RouteLocationNormalized,
-    next: NavigationGuardNext,
-
-  ) => {
+  public preFetchRouteData = (routeTo: RouteLocationNormalized, next: NavigationGuardNext) => {
     const allActions: Promise<any>[] = [];
     if (this.loaderSetup.loading) {
       return;
@@ -186,7 +179,7 @@ export default class Common {
     const BreakException = {};
 
     try {
-      fetchRules?.forEach((rule) => {
+      fetchRules?.forEach(rule => {
         if (rule.requireAuth) {
           // check auth here
         }
@@ -194,18 +187,14 @@ export default class Common {
         // @ts-ignore
         const domain = Logic[rule.domain];
 
-        if (
-          domain[rule.property] == undefined ||
-          (typeof rule.ignoreProperty == "function" && rule.ignoreProperty()) ||
-          rule.ignoreProperty
-        ) {
+        if (domain[rule.property] == undefined || (typeof rule.ignoreProperty == 'function' && rule.ignoreProperty()) || rule.ignoreProperty) {
           allActions.push(
-            new Promise((resolve) => {
+            new Promise(resolve => {
               if (rule.useRouteId) {
                 rule.params.unshift(routeTo.params.id.toString());
               }
               if (rule.useRouteQuery) {
-                rule.queries?.forEach((item) => {
+                rule.queries?.forEach(item => {
                   rule.params.unshift(routeTo.query[item]);
                 });
               }
@@ -213,7 +202,7 @@ export default class Common {
               request?.then((value: any) => {
                 resolve(value);
               });
-            })
+            }),
           );
         }
       });
