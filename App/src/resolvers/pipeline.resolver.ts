@@ -1,8 +1,8 @@
-import PipelineRepository from '@/repositories/pipeline.repository';
-import { CreatePipelineDto } from '@/dtos/pipeline.dto';
+import PipelineRepository from '../repositories/pipeline.repository';
+import { CreatePipelineDto } from '../dtos/pipeline.dto';
 import { Schema } from 'bitbucket';
-import { PipelineEntity } from '@/entities/pipeline.entity';
-import { PipelineBuildEntity } from '@/entities/pipelineBuild.entity';
+import { PipelineEntity } from '../entities/pipeline.entity';
+import { PipelineBuildEntity } from '../entities/pipelineBuild.entity';
 
 export class pipelineResolver extends PipelineRepository {
   async workspaces(): Promise<Schema.Workspace[]> {

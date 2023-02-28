@@ -1,6 +1,6 @@
-import { User } from '@/interfaces/users.interface';
-import { CreateUserDto } from '@dtos/users.dto';
-import UserRepository from '@repositories/users.repository';
+import { User } from '../interfaces/users.interface';
+import { CreateUserDto } from '../dtos/users.dto';
+import UserRepository from '../repositories/users.repository';
 
 export class userResolver extends UserRepository {
   async getUsers(): Promise<User[]> {

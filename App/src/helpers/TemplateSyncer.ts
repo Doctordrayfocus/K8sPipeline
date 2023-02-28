@@ -1,6 +1,6 @@
 import shell from 'shelljs';
 import path from 'path';
-import { TEMPLATE_CONFIG_REPO_URL, TEMPLATE_SYNC_INTERVAL } from '@/config';
+import { TEMPLATE_CONFIG_REPO_URL, TEMPLATE_SYNC_INTERVAL } from '../config';
 
 export default class TemplateSyncer {
   public syncRemoteFiles = () => {

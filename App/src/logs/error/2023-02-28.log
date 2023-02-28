@@ -97,3 +97,19 @@ TypeError: this.updatePipelineBuild is not a function
     at readableAddChunk (node:internal/streams/readable:293:11)
     at Socket.Readable.push (node:internal/streams/readable:234:10)
     at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-28 11:19:00 error: uncaughtException: Cannot find module '@utils/validateEnv'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/App/src/server.ts
+Error: Cannot find module '@utils/validateEnv'
+Require stack:
+- /Users/mac/Documents/www/K8sPipeline/App/src/server.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:995:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue [as _resolveFilename] (/usr/local/lib/node_modules/ts-node/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+    at Function.Module._load (node:internal/modules/cjs/loader:841:27)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/server.ts:2:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/usr/local/lib/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/usr/local/lib/node_modules/ts-node/src/index.ts:1621:12)

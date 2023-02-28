@@ -13,6 +13,9 @@ RUN apk add docker
 
 RUN apk add --update nodejs npm
 
+# install node typescript
+RUN npm install -g ts-node
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -27,7 +30,7 @@ RUN cd /usr/src/app && npm install && npm run build
 
 
 EXPOSE 8080
-CMD [ "npm", "run", "dev"]
+CMD [ "ts-node", "src/server.ts"]
 
 # We need to add our NGINX template to the container for startup,
 # and configuration.

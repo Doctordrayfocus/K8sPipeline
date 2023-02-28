@@ -1,4 +1,4 @@
-import { AuthStrategy } from '@/interfaces/authStrategy.inteface';
+import { AuthStrategy } from '../interfaces/authStrategy.inteface';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()

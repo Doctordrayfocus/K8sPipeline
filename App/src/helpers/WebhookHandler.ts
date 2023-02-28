@@ -1,5 +1,5 @@
-import { PipelineBuild } from '@/interfaces/pipeline.interface';
-import PipelineRepository from '@/repositories/pipeline.repository';
+import { PipelineBuild } from '../interfaces/pipeline.interface';
+import PipelineRepository from '../repositories/pipeline.repository';
 
 export default class WebhookHandler {
   private generateTemplate = (templateVariables: any, configsToUse: string[], buildId: number) => {

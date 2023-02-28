@@ -1,9 +1,9 @@
 import { verify } from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
-import { SECRET_KEY } from '@config';
-import { UserEntity } from '@entities/users.entity';
-import { HttpException } from '@exceptions/HttpException';
-import { DataStoredInToken } from '@interfaces/auth.interface';
+import { SECRET_KEY } from '../config';
+import { UserEntity } from '../entities/users.entity';
+import { HttpException } from '../exceptions/HttpException';
+import { DataStoredInToken } from '../interfaces/auth.interface';
 
 export const authMiddleware = async req => {
   try {

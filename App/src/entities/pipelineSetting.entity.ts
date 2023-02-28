@@ -1,5 +1,5 @@
 import { PipelineEntity } from './pipeline.entity';
-import { PipelineSetting } from '@/interfaces/pipeline.interface';
+import { PipelineSetting } from '../interfaces/pipeline.interface';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
 
 @Entity()

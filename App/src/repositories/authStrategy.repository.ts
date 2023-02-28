@@ -1,4 +1,4 @@
-import { AuthStrategyEntity } from '@/entities/authStrategy.entity';
+import { AuthStrategyEntity } from '../entities/authStrategy.entity';
 import { EntityRepository } from 'typeorm';
 import passport from 'passport';
 import { GitLabStrategy as GitHubStrategy } from 'passport-github2';
@@ -10,8 +10,8 @@ import {
   GITHUB_CLIENT_SECRET,
   GITLAB_APP_ID,
   GITLAB_APP_SECRET,
-} from '@/config';
-import { AuthStrategy } from '@/interfaces/authStrategy.inteface';
+} from '../config';
+import { AuthStrategy } from '../interfaces/authStrategy.inteface';
 import { Strategy as GitLabStrategy } from 'passport-gitlab2';
 import { Strategy as BitbucketStrategy } from 'passport-bitbucket-oauth2';
 import refresh from 'passport-oauth2-refresh';

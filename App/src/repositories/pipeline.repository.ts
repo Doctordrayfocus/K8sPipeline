@@ -1,16 +1,16 @@
 import { PipelineBuildEntity } from './../entities/pipelineBuild.entity';
 import { CreatePipelineDto } from './../dtos/pipeline.dto';
-import { AuthStrategyEntity } from '@/entities/authStrategy.entity';
-import { PipelineEntity } from '@/entities/pipeline.entity';
-import { PipelineSettingEntity } from '@/entities/pipelineSetting.entity';
-import VariableExtractor from '@/helpers/VariableExtractor';
-import { BuildUpdateData, CommitData, Pipeline, PipelineBuild, PipelineSetting } from '@/interfaces/pipeline.interface';
+import { AuthStrategyEntity } from '../entities/authStrategy.entity';
+import { PipelineEntity } from '../entities/pipeline.entity';
+import { PipelineSettingEntity } from '../entities/pipelineSetting.entity';
+import VariableExtractor from '../helpers/VariableExtractor';
+import { BuildUpdateData, CommitData, Pipeline, PipelineBuild, PipelineSetting } from '../interfaces/pipeline.interface';
 import { APIClient, Bitbucket } from 'bitbucket';
 import path from 'path';
 import { EntityRepository } from 'typeorm';
 import shell from 'shelljs';
 import AuthStrategyRepository from './authStrategy.repository';
-import { APP_URL, DOCKER_REGISTRY } from '@/config';
+import { APP_URL, DOCKER_REGISTRY } from '../config';
 
 @EntityRepository(PipelineEntity)
 export default class PipelineRepository {

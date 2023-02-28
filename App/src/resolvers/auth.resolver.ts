@@ -1,6 +1,6 @@
-import { User } from '@/interfaces/users.interface';
-import { CreateUserDto } from '@dtos/users.dto';
-import AuthRepository from '@repositories/auth.repository';
+import { User } from '../interfaces/users.interface';
+import { CreateUserDto } from '../dtos/users.dto';
+import AuthRepository from '../repositories/auth.repository';
 
 export class authResolver extends AuthRepository {
   async signup(userData: CreateUserDto): Promise<User> {
