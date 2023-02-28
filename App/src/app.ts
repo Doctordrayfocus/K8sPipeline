@@ -54,7 +54,7 @@ class App {
     this.initApolloServer();
     this.initializeErrorHandling();
     this.registerRestRoute();
-    // this.syncAppTemplate();
+    this.syncAppTemplate();
   }
 
   public async listen() {
