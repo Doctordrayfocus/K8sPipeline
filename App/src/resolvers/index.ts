@@ -26,6 +26,9 @@ export const resolvers = {
     getPipelineData(_parent, args) {
       return PipelineResolver.getPipeline(args.pipelineUuid);
     },
+    getBuildData(_parent, args) {
+      return PipelineResolver.getBuildData(args.buildUuid);
+    },
   },
   Mutation: {
     signup(_parent, args) {

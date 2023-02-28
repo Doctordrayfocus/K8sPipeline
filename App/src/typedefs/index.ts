@@ -44,6 +44,7 @@ export const typeDefs = `#graphql
     createdAt: String
     updatedAt: String
     settings: [PipelineSetting]
+    builds: [PipelineBuild]
     lang_config_folders: String
 }
 
@@ -54,6 +55,19 @@ type PipelineSetting {
   pipeline_id: Int!
   service_config: String
   config_to_use: String
+}
+
+type PipelineBuild {
+  id: ID
+  uuid: String
+  title: String
+  status: String
+  started_at: String
+  ended_at: String
+  content: String
+  branch: String
+  commit_id: String
+  pipelineUuid: String
 }
 
 type Repository {
@@ -78,6 +92,9 @@ type Repository {
   getPipelineData(
     pipelineUuid: String!
   ): Pipeline
+  getBuildData(
+    buildUuid: String!
+  ): PipelineBuild
  }
 
  type Mutation {

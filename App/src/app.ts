@@ -22,6 +22,7 @@ import { json } from 'body-parser';
 import { typeDefs } from './typedefs';
 import { resolvers } from './resolvers';
 import path from 'path';
+import WebhookHandler from './helpers/WebhookHandler';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -54,7 +55,7 @@ class App {
     this.initApolloServer();
     this.initializeErrorHandling();
     this.registerRestRoute();
-    this.syncAppTemplate();
+    // this.syncAppTemplate();
   }
 
   public async listen() {
@@ -95,8 +96,14 @@ class App {
 
       this.app.get('/auth/bitbucket', authStrategyRepo.authenticateStategy('bitbucket'));
 
-      this.app.post('/bitbucket-webhook', (req, res) => {
-        console.log(req.body);
+      const webhookHandler = new WebhookHandler();
+      this.app.post('/bitbucket-webhook', async (req, res) => {
+        try {
+          await webhookHandler.bitbucket(req.body);
+          res.send('done');
+        } catch (error) {
+          console.error(error);
+        }
       });
 
       // this.app.get('/auth/giblab', authStrategyRepo.authenticateStategy('gitlab'));
@@ -126,6 +133,11 @@ class App {
 
       this.app.get('/testing', (req, res) => {
         res.send('Testing');
+      });
+
+      this.app.post('/update-build', async (req, res) => {
+        await pipelineRepo.updatePipelineBuild(req.body);
+        res.send('Build updated');
       });
 
       this.app.use(express.static(path.join(__dirname, '../frontend/dist')));

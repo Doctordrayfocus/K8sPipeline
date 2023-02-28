@@ -1,12 +1,11 @@
-import { CreatePipelineDto, Pipeline, SettingsUpdateData } from './../gql/graphql';
-import { OperationResult } from "urql";
-import { BaseApiService } from "./common/BaseService";
-import { Repository, Workspace } from "@/gql/graphql";
+import { CreatePipelineDto, Pipeline, PipelineBuild, SettingsUpdateData } from './../gql/graphql';
+import { OperationResult } from 'urql';
+import { BaseApiService } from './common/BaseService';
+import { Repository, Workspace } from '@/gql/graphql';
 
 export default class PipelineApi extends BaseApiService {
-   
-   public GetWorkspaces = () => {
-        const requestData = `
+  public GetWorkspaces = () => {
+    const requestData = `
         query GetWorkspaces {
             workspaces {
               name
@@ -15,18 +14,15 @@ export default class PipelineApi extends BaseApiService {
             }
           }
         `;
-    
-    const response: Promise<
-      OperationResult<{
-        workspaces: Workspace[];
-      }>
-    > = this.query(requestData,{}); 
+
+    const response: Promise<OperationResult<{
+      workspaces: Workspace[];
+    }>> = this.query(requestData, {});
     return response;
-    }
+  };
 
-
-    public GetRepositories =  (workspaceId: string) => {
-        const requestData = `
+  public GetRepositories = (workspaceId: string) => {
+    const requestData = `
         query GetRepositories($workspaceId: String!) {
             repositories(workspaceId: $workspaceId) {
               full_name
@@ -36,19 +32,17 @@ export default class PipelineApi extends BaseApiService {
             }
           }
         `;
-    
-    const response: Promise<
-      OperationResult<{
-        repositories: Repository[];
-      }>
-    > = this.query(requestData,{
-        workspaceId
-    }); 
-    return response;
-    }
 
-    public GetPipelines =  () => {
-      const requestData = `
+    const response: Promise<OperationResult<{
+      repositories: Repository[];
+    }>> = this.query(requestData, {
+      workspaceId,
+    });
+    return response;
+  };
+
+  public GetPipelines = () => {
+    const requestData = `
       query Pipelines {
         pipelines {
           createdAt
@@ -66,18 +60,14 @@ export default class PipelineApi extends BaseApiService {
         }
       }
       `;
-  
-  const response: Promise<
-    OperationResult<{
-      pipelines: Pipeline[];
-    }>
-  > = this.query(requestData,{
-      
-  }); 
-  return response;
-  }
 
-  public GetPipeline =  (pipelineUuid: string) => {
+    const response: Promise<OperationResult<{
+      pipelines: Pipeline[];
+    }>> = this.query(requestData, {});
+    return response;
+  };
+
+  public GetPipeline = (pipelineUuid: string) => {
     const requestData = `
     query Pipelines($pipelineUuid: String!) {
       getPipelineData(pipelineUuid: $pipelineUuid) {
@@ -96,22 +86,56 @@ export default class PipelineApi extends BaseApiService {
           uuid
           service_config
         }
+        builds {
+          uuid
+          commit_id
+          content
+          ended_at
+          pipelineUuid
+          started_at
+          status
+          title
+          branch
+        }
       }
     }
     `;
 
-const response: Promise<
-  OperationResult<{
-    getPipelineData: Pipeline;
-  }>
-> = this.query(requestData,{
-  pipelineUuid
-}); 
-return response;
-}
+    const response: Promise<OperationResult<{
+      getPipelineData: Pipeline;
+    }>> = this.query(requestData, {
+      pipelineUuid,
+    });
+    return response;
+  };
 
-    public createServicePipeline = (createPipelineData: CreatePipelineDto) => {
-        const requestData = `
+  public GetBuildPipeline = (buildUuid: string) => {
+    const requestData = `
+    query Build($buildUuid: String!) {
+      getBuildData(buildUuid: $buildUuid) {
+        branch
+        commit_id
+        content
+        ended_at
+        pipelineUuid
+        started_at
+        status
+        title
+        uuid
+      }
+    }
+    `;
+
+    const response: Promise<OperationResult<{
+      getBuildData: PipelineBuild;
+    }>> = this.query(requestData, {
+      buildUuid,
+    });
+    return response;
+  };
+
+  public createServicePipeline = (createPipelineData: CreatePipelineDto) => {
+    const requestData = `
         mutation CreatePipelineTemplate($createPipelineData: CreatePipelineDto!) {
             createPipelineTemplate(createPipelineData: $createPipelineData) {
               createdAt
@@ -120,38 +144,31 @@ return response;
               status
               updatedAt
               repo_id
-              lang 
+              lang
             }
           }
         `;
-    
-    const response: Promise<
-      OperationResult<{
-        createPipelineTemplate: Pipeline;
-      }>
-    > = this.mutation(requestData,{
-        createPipelineData
-    }); 
+
+    const response: Promise<OperationResult<{
+      createPipelineTemplate: Pipeline;
+    }>> = this.mutation(requestData, {
+      createPipelineData,
+    });
     return response;
-    }
-
-
+  };
 
   public updatePipelineSetting = (settingsUpdateData: SettingsUpdateData) => {
-      const requestData = `
+    const requestData = `
       mutation UpdateSetting($settingsUpdateData: settingsUpdateData) {
         updateSetting(settingsUpdateData: $settingsUpdateData)
       }
       `;
-  
-  const response: Promise<
-    OperationResult<{
+
+    const response: Promise<OperationResult<{
       updateSetting: boolean;
-    }>
-  > = this.mutation(requestData,{
-    settingsUpdateData
-  }); 
-  return response;
-  }
-    
-} 
+    }>> = this.mutation(requestData, {
+      settingsUpdateData,
+    });
+    return response;
+  };
+}

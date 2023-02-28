@@ -34,3 +34,33 @@ export interface Repository {
   description: string;
   uuid: string;
 }
+
+export interface PipelineBuild {
+  id?: number;
+  uuid?: string;
+  title: string;
+  status: string;
+  started_at: Date;
+  ended_at: Date;
+  content: string;
+  commit_id: string;
+  pipelineUuid: string;
+  branch: string;
+  pipeline?: Pipeline;
+  pipelineId?: number;
+}
+
+export interface CommitData {
+  branch: string;
+  commitId: string;
+  repoId: string;
+  message: string;
+  repoUrl: string;
+}
+
+export interface BuildUpdateData {
+  uuid: string;
+  status: string;
+  percentageCompleted?: number;
+  content?: string;
+}

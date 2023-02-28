@@ -14,5 +14,8 @@ export class CreatePipelineDto {
   repo_name: string;
 
   @IsString()
+  repo_url: string;
+
+  @IsString()
   lang: string;
 }

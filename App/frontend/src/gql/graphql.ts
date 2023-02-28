@@ -76,6 +76,7 @@ export type MutationUpdateUserArgs = {
 
 export type Pipeline = {
   __typename?: 'Pipeline';
+  builds?: Maybe<Array<Maybe<PipelineBuild>>>;
   createdAt?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   full_name?: Maybe<Scalars['String']>;
@@ -87,6 +88,20 @@ export type Pipeline = {
   settings?: Maybe<Array<Maybe<PipelineSetting>>>;
   status?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['String']>;
+  uuid?: Maybe<Scalars['String']>;
+};
+
+export type PipelineBuild = {
+  __typename?: 'PipelineBuild';
+  branch?: Maybe<Scalars['String']>;
+  commit_id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  ended_at?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  pipelineUuid?: Maybe<Scalars['String']>;
+  started_at?: Maybe<Scalars['String']>;
+  status?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
   uuid?: Maybe<Scalars['String']>;
 };
 
@@ -102,12 +117,18 @@ export type PipelineSetting = {
 
 export type Query = {
   __typename?: 'Query';
+  getBuildData?: Maybe<PipelineBuild>;
   getPipelineData?: Maybe<Pipeline>;
   getUserById?: Maybe<User>;
   getUsers: Array<User>;
   pipelines: Array<Pipeline>;
   repositories: Array<Repository>;
   workspaces: Array<Workspace>;
+};
+
+
+export type QueryGetBuildDataArgs = {
+  buildUuid: Scalars['String'];
 };
 
 

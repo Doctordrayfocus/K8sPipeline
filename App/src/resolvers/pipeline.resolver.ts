@@ -2,6 +2,7 @@ import PipelineRepository from '@/repositories/pipeline.repository';
 import { CreatePipelineDto } from '@/dtos/pipeline.dto';
 import { Schema } from 'bitbucket';
 import { PipelineEntity } from '@/entities/pipeline.entity';
+import { PipelineBuildEntity } from '@/entities/pipelineBuild.entity';
 
 export class pipelineResolver extends PipelineRepository {
   async workspaces(): Promise<Schema.Workspace[]> {
@@ -28,6 +29,11 @@ export class pipelineResolver extends PipelineRepository {
   async getPipelineData(pipelineUuid: string): Promise<PipelineEntity> {
     const pipeline = await this.getPipeline(pipelineUuid);
     return pipeline;
+  }
+
+  async getBuildData(buildUuid: string): Promise<PipelineBuildEntity> {
+    const pipelineBuild = await this.getPipelineBuild(buildUuid);
+    return pipelineBuild;
   }
 
   async updateSetting(settingsUpdateData: { settingUuid: string; configToUse: string; serviceConfig: string }): Promise<boolean> {

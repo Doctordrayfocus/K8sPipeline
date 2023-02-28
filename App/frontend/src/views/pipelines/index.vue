@@ -7,27 +7,22 @@
     </div>
 
     <div class="col-span-full flex flex-col space-y-5 pt-3">
-      <bp-pipeline
-        v-for="(pipeline, index) in pipelines"
-        :key="index"
-        :pipeline="pipeline"
-      >
-      </bp-pipeline>
+      <bp-pipeline v-for="(pipeline, index) in pipelines" :key="index" :pipeline="pipeline"> </bp-pipeline>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from "vue";
-import { useMeta } from "vue-meta";
-import BpHeaderText from "@/components/typography/headerText.vue";
-import BpPaginator from "@/components/common/paginator.vue";
-import BpPipeline from "@/components/common/pipeline.vue";
-import { Logic } from "@/composables";
+import { defineComponent, onMounted, ref, watch } from 'vue';
+import { useMeta } from 'vue-meta';
+import BpHeaderText from '@/components/typography/headerText.vue';
+import BpPaginator from '@/components/common/paginator.vue';
+import BpPipeline from '@/components/common/pipeline.vue';
+import { Logic } from '@/composables';
 
 export default defineComponent({
-  name: "PipelinesPage",
-  layout: "Dashboard",
+  name: 'PipelinesPage',
+  layout: 'Dashboard',
   components: {
     BpHeaderText,
     BpPaginator,
@@ -36,9 +31,9 @@ export default defineComponent({
   middlewares: {
     fetchRules: [
       {
-        domain: "Pipeline",
-        property: "Pipelines",
-        method: "GetPipelines",
+        domain: 'Pipeline',
+        property: 'Pipelines',
+        method: 'GetPipelines',
         params: [],
         requireAuth: false,
       },
@@ -46,7 +41,7 @@ export default defineComponent({
   },
   setup() {
     useMeta({
-      title: "Pipelines",
+      title: 'Pipelines',
     });
 
     const AllPipelines = ref(Logic.Pipeline.Pipelines);
@@ -55,16 +50,14 @@ export default defineComponent({
 
     const setPipelineData = () => {
       pipelines.value.length = 0;
-      AllPipelines.value?.forEach((pipeline) => {
-        const allBranches = pipeline.settings?.map((branch) => branch?.branch);
-        const PipelineStatus = Logic.Pipeline.pipelineStatusLabel(pipeline);
+      AllPipelines.value?.forEach(pipeline => {
+        const allBranches = pipeline.settings?.map(branch => branch?.branch);
+        const PipelineStatus = Logic.Pipeline.pipelineStatusLabel(pipeline.status || '');
         pipelines.value.push({
-          name: pipeline.full_name || "",
-          lastActive: Logic.Common.timeFromNow(
-            parseInt(pipeline.updatedAt || "0")
-          ),
-          lang: pipeline.lang || "",
-          branches: allBranches?.join(", ") || "",
+          name: pipeline.full_name || '',
+          lastActive: Logic.Common.timeFromNow(parseInt(pipeline.updatedAt || '0')),
+          lang: pipeline.lang || '',
+          branches: allBranches?.join(', ') || '',
           status: PipelineStatus.status,
           color: PipelineStatus.color,
           uuid: pipeline.uuid,
@@ -73,7 +66,7 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      Logic.Pipeline.watchProperty("Pipelines", AllPipelines);
+      Logic.Pipeline.watchProperty('Pipelines', AllPipelines);
       setPipelineData();
     });
 

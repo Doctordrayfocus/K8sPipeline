@@ -1,0 +1,309 @@
+2023-02-27 17:16:07 error: uncaughtException: Cannot read properties of undefined (reading 'full_name')
+TypeError: Cannot read properties of undefined (reading 'full_name')
+    at WebhookHandler.bitbucket (/Users/mac/Documents/www/K8sPipeline/App/src/helpers/WebhookHandler.ts:33:47)
+    at /Users/mac/Documents/www/K8sPipeline/App/src/app.ts:101:30
+    at Layer.handle [as handle_request] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/index.js:346:12)
+    at next (/Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/index.js:280:10)
+    at Layer.handle [as handle_request] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/express/lib/router/layer.js:91:12)
+2023-02-27 22:42:00 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 22:42:00 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:02:06 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:02:06 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:05:01 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:05:01 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:08:12 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:08:12 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:08:12 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:08:12 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:08:13 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:08:13 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:10:30 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:190:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:10:30 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:190:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:10:30 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:190:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:10:31 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:190:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:10:32 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:190:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:10:32 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:190:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:10:33 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:190:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:20 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:20 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:20 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:21 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:22 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:22 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:22 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:44:22 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:188:12)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:47:14 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:47:14 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:47:14 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:47:15 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:47:15 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+2023-02-27 23:47:15 error: uncaughtException: this.updatePipelineBuild is not a function
+TypeError: this.updatePipelineBuild is not a function
+    at Socket.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:189:14)
+    at Socket.emit (node:events:525:35)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)

@@ -1,6 +1,7 @@
 import { PipelineSettingEntity } from './pipelineSetting.entity';
 import { Pipeline } from '@/interfaces/pipeline.interface';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { PipelineBuildEntity } from './pipelineBuild.entity';
 
 @Entity()
 export class PipelineEntity extends BaseEntity implements Pipeline {
@@ -30,6 +31,9 @@ export class PipelineEntity extends BaseEntity implements Pipeline {
 
   @OneToMany(() => PipelineSettingEntity, piplineSetting => piplineSetting.pipeline)
   settings: PipelineSettingEntity[];
+
+  @OneToMany(() => PipelineBuildEntity, piplineBuild => piplineBuild.pipeline)
+  builds: PipelineBuildEntity[];
 
   @Column()
   @CreateDateColumn()
