@@ -5,6 +5,9 @@ FROM hoosin/alpine-nginx-nodejs:latest
 # install git
 RUN apk add --no-cache git
 
+# install curl
+RUN apk add --no-cache curl
+
 # install docker
 RUN apk add docker
 
