@@ -134,10 +134,10 @@ export default class PipelineRepository {
       })
       .execute();
 
-    global.SocketServer.emit(`status-${data.uuid}`, {
-      status: data.status,
-      percentageCompleted: data.percentageCompleted,
-    });
+    // global.SocketServer.emit(`status-${data.uuid}`, {
+    //   status: data.status,
+    //   percentageCompleted: data.percentageCompleted,
+    // });
   };
 
   public runBuildPipeline = async (build: PipelineBuild, pipeline: PipelineEntity, commitData: CommitData, template: string) => {
@@ -193,13 +193,13 @@ ${updateBuildProgress({
       });
     });
 
-    childProcess.on('error', () => {
-      this.updatePipelineBuild({
-        percentageCompleted: 100,
-        status: 'failed',
-        uuid: build.uuid,
-      });
-    });
+    // childProcess.on('error', () => {
+    //   this.updatePipelineBuild({
+    //     percentageCompleted: 100,
+    //     status: 'failed',
+    //     uuid: build.uuid,
+    //   });
+    // });
   };
 
   public createPipelineBuild = async (pipelineBuild: PipelineBuild, pipeline: PipelineEntity) => {
