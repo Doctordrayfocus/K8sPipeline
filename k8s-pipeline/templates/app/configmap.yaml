@@ -8,7 +8,7 @@ data:
   DB_HOST: k8spipeline-mysql.{{ .Release.Namespace }}.svc.cluster.local
   DB_PORT: "3306"
   DB_USER: root
-  NODE_ENV: development
+  NODE_ENV: production
   DB_PASSWORD: password
   DB_DATABASE: k8s_pipeline
   SECRET_KEY: secretKey

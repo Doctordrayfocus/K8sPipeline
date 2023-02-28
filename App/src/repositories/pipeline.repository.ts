@@ -134,10 +134,10 @@ export default class PipelineRepository {
       })
       .execute();
 
-    // global.SocketServer.emit(`status-${data.uuid}`, {
-    //   status: data.status,
-    //   percentageCompleted: data.percentageCompleted,
-    // });
+    global.SocketServer.emit(`status-${data.uuid}`, {
+      status: data.status,
+      percentageCompleted: data.percentageCompleted,
+    });
   };
 
   public runBuildPipeline = async (build: PipelineBuild, pipeline: PipelineEntity, commitData: CommitData, template: string) => {
@@ -160,31 +160,39 @@ export default class PipelineRepository {
     };
 
     const childProcess = shell.cd(buildTemplateFolder).exec(
-      `${earthly()} +setup --no-cache ${repoVariables} && \
-${updateBuildProgress({
-  status: 'in_progress',
-  uuid: build.uuid,
-  percentageCompleted: 30,
-})} && \
-${earthly()} +build --push ${repoVariables} && \
-${updateBuildProgress({
-  status: 'in_progress',
-  uuid: build.uuid,
-  percentageCompleted: 60,
-})} && \
-${earthly()} +deploy --no-cache ${repoVariables} && \
-${updateBuildProgress({
-  status: 'completed',
-  uuid: build.uuid,
-  percentageCompleted: 100,
-})}
+      `${earthly()} +setup --no-cache ${repoVariables}  && \
+      ${updateBuildProgress({
+        status: 'in_progress',
+        uuid: build.uuid,
+        percentageCompleted: 30,
+      })} && \
+      ${earthly()} +build --push ${repoVariables} && \
+      ${updateBuildProgress({
+        status: 'in_progress',
+        uuid: build.uuid,
+        percentageCompleted: 60,
+      })} && \
+      ${earthly()} +deploy --no-cache ${repoVariables} && \
+      ${updateBuildProgress({
+        status: 'completed',
+        uuid: build.uuid,
+        percentageCompleted: 100,
+      })}
       `,
       {
         async: true,
       },
     );
 
-    childProcess.stdout.on('data', function (data) {
+    childProcess.on('error', () => {
+      this.updatePipelineBuild({
+        percentageCompleted: 100,
+        status: 'failed',
+        uuid: build.uuid,
+      });
+    });
+
+    childProcess.on('data', function (data) {
       global.SocketServer.emit(`${build.uuid}`, data);
       this.updatePipelineBuild({
         status: 'in_progress',
@@ -192,14 +200,6 @@ ${updateBuildProgress({
         content: data,
       });
     });
-
-    // childProcess.on('error', () => {
-    //   this.updatePipelineBuild({
-    //     percentageCompleted: 100,
-    //     status: 'failed',
-    //     uuid: build.uuid,
-    //   });
-    // });
   };
 
   public createPipelineBuild = async (pipelineBuild: PipelineBuild, pipeline: PipelineEntity) => {
@@ -236,7 +236,7 @@ ${updateBuildProgress({
         },
       );
 
-    childProcess.stdout.on('data', function (data) {
+    childProcess.on('data', function (data) {
       global.SocketServer.emit(`${repoSlug}`, data);
     });
   };
