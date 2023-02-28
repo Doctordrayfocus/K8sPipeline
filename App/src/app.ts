@@ -81,12 +81,7 @@ class App {
   private setSocketServe = () => {
     this.httpServer = http.createServer(this.app);
     this.socketIo = new Server(this.httpServer);
-
     global.SocketServer = this.socketIo;
-
-    this.socketIo.once('connection', () => {
-      console.log('a user connected');
-    });
   };
 
   private registerRestRoute() {
