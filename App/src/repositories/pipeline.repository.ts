@@ -202,25 +202,6 @@ export default class PipelineRepository {
       },
     );
 
-    // && \
-    //   ${updateBuildProgress({
-    //     status: 'in_progress',
-    //     uuid: build.uuid,
-    //     percentageCompleted: 30,
-    //   })} && \
-    //   ${earthly()} +build --push ${repoVariables} && \
-    //   ${updateBuildProgress({
-    //     status: 'in_progress',
-    //     uuid: build.uuid,
-    //     percentageCompleted: 60,
-    //   })} && \
-    //   ${earthly()} +deploy --no-cache ${repoVariables} && \
-    //   ${updateBuildProgress({
-    //     status: 'completed',
-    //     uuid: build.uuid,
-    //     percentageCompleted: 100,
-    //   })}
-
     childProcess.stdout.on('data', async data => {
       global.SocketServer.emit(`${build.uuid}`, data);
       await fs.appendFile(path.join(__dirname, `../../build_logs/${build.uuid}.log`), data);
@@ -297,7 +278,7 @@ export default class PipelineRepository {
       .exec(
         `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30 ${this.getLanguageRepo(
           lang,
-        )}+install --service=${repoSlug} --envs=${branches.toString()}`,
+        )}+install --no-cache --service=${repoSlug} --envs=${branches.toString()}`,
         {
           async: true,
           silent: true,
