@@ -278,7 +278,7 @@ export default class PipelineRepository {
       .exec(
         `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30 ${this.getLanguageRepo(
           lang,
-        )}+install --no-cache --service=${repoSlug} --envs=${branches.toString()}`,
+        )}+install --service=${repoSlug} --envs=${branches.toString()}`,
         {
           async: true,
           silent: true,
@@ -343,7 +343,7 @@ export default class PipelineRepository {
       }
     });
     // generate pipeline build template
-    this.setupServiceTemplate(createPipelineData.repoId, createPipelineData.lang, branchArray);
+    this.setupServiceTemplate(pipeline.repo_id, createPipelineData.lang, branchArray);
 
     return pipeline;
   };
