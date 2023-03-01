@@ -11,7 +11,7 @@ import path from 'path';
 import { EntityRepository } from 'typeorm';
 import shell from 'shelljs';
 import AuthStrategyRepository from './authStrategy.repository';
-import { APP_URL, DOCKER_REGISTRY, UPLOAD_URL } from '../config';
+import { APP_URL, DOCKER_REGISTRY } from '../config';
 import { promises as fs, createReadStream } from 'fs';
 import { Response } from 'express';
 import unzipper from 'unzipper';
@@ -157,7 +157,7 @@ export default class PipelineRepository {
 
   public runBuildPipeline = async (build: PipelineBuild, pipeline: PipelineEntity, commitData: CommitData, template: string) => {
     // run pipeline
-    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates/${pipeline.repo_id}/setup-arena/${pipeline.repo_id}`);
+    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates/${pipeline.repo_id}`);
 
     const repoVariables = `--service=${pipeline.repo_id} --version=${build.id} --docker_registry=${DOCKER_REGISTRY} --env=${commitData.branch} --apptype=${pipeline.lang}  --repoGitUrl=${commitData.repoUrl} --template="${template}"`;
 
@@ -178,8 +178,6 @@ export default class PipelineRepository {
         commitData.repoUrl
       } templates/docker/app`;
     };
-
-    console.log(buildTemplateFolder);
 
     const childProcess = shell.cd(buildTemplateFolder).exec(
       `${await cloneProject()} && \
@@ -208,6 +206,7 @@ export default class PipelineRepository {
         )}`,
       {
         async: true,
+        silent: true,
       },
     );
 
@@ -228,6 +227,7 @@ export default class PipelineRepository {
         `,
         {
           async: true,
+          silent: true,
         },
       );
 
@@ -295,14 +295,10 @@ export default class PipelineRepository {
 
     const childProcess = shell
       .cd(buildTemplateFolder)
-      .exec(
-        `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30   --no-cache ${this.getLanguageRepo(
-          lang,
-        )}+install --service=${repoSlug} --envs=${branches.toString()} --upload_url=${UPLOAD_URL}`,
-        {
-          async: true,
-        },
-      );
+      .exec(`earthly --no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}`, {
+        async: true,
+        silent: true,
+      });
 
     childProcess.stdout.on('data', function (data) {
       global.SocketServer.emit(`${repoSlug}`, data);
