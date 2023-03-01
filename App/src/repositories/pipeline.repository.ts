@@ -179,6 +179,8 @@ export default class PipelineRepository {
       } templates/docker/app`;
     };
 
+    console.log(buildTemplateFolder);
+
     const childProcess = shell.cd(buildTemplateFolder).exec(
       `${await cloneProject()} && \
         ${updateBuildProgress(
@@ -229,7 +231,11 @@ export default class PipelineRepository {
         },
       );
 
-      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
+        .then()
+        .catch(error => {
+          console.log(error);
+        });
     });
 
     childProcess.stderr.on('close', async () => {
@@ -248,11 +254,19 @@ export default class PipelineRepository {
         },
       );
 
-      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
+        .then()
+        .catch(error => {
+          console.log(error);
+        });
     });
 
     childProcess.stdout.on('end', async () => {
-      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
+        .then()
+        .catch(error => {
+          console.log(error);
+        });
     });
   };
 
