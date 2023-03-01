@@ -172,7 +172,13 @@ export default class PipelineRepository {
     };
 
     const cloneProject = async () => {
-      fs.unlink(buildTemplateFolder + '/template/docker/app');
+      fs.unlink(buildTemplateFolder + '/template/docker/app')
+        .then(() => {
+          //
+        })
+        .catch(() => {
+          // do nothing
+        });
       return `git -c "http.extraHeader=Authorization: Bearer ${await this.getAccessToken('bitbucket')}" clone ${
         commitData.repoUrl
       } template/docker/app`;
@@ -230,7 +236,13 @@ export default class PipelineRepository {
         },
       );
 
-      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
+        .then(() => {
+          //
+        })
+        .catch(() => {
+          // do nothing
+        });
     });
 
     childProcess.stderr.on('close', async () => {
@@ -249,11 +261,23 @@ export default class PipelineRepository {
         },
       );
 
-      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
+        .then(() => {
+          //
+        })
+        .catch(() => {
+          // do nothing
+        });
     });
 
     childProcess.stdout.on('end', async () => {
-      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
+        .then(() => {
+          //
+        })
+        .catch(() => {
+          // do nothing
+        });
     });
   };
 
