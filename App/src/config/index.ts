@@ -24,4 +24,5 @@ export const {
   TEMPLATE_SYNC_INTERVAL,
   APP_URL,
   DOCKER_REGISTRY,
+  UPLOAD_URL,
 } = process.env;

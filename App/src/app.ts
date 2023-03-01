@@ -22,6 +22,7 @@ import { typeDefs } from './typedefs';
 import { resolvers } from './resolvers';
 import path from 'path';
 import WebhookHandler from './helpers/WebhookHandler';
+import fileUpload from 'express-fileupload';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -54,7 +55,7 @@ class App {
     this.initApolloServer();
     this.initializeErrorHandling();
     this.registerRestRoute();
-    this.syncAppTemplate();
+    // this.syncAppTemplate();
   }
 
   public async listen() {
@@ -134,6 +135,13 @@ class App {
         res.send('Build updated');
       });
 
+      this.app.post('/save-service-setup', (req, res) => {
+        if (!req.files || Object.keys(req.files).length === 0) {
+          return res.status(400).send('No files were uploaded.');
+        }
+        return pipelineRepo.extractServiceFolder(req.files.data, res);
+      });
+
       this.app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
       this.app.get('/*', (req, res) => {
@@ -166,6 +174,12 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    this.app.use(
+      fileUpload({
+        useTempFiles: true,
+        tempFileDir: '/tmp/',
+      }),
+    );
   }
 
   private async initApolloServer() {

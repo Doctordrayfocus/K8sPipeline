@@ -11,8 +11,10 @@ import path from 'path';
 import { EntityRepository } from 'typeorm';
 import shell from 'shelljs';
 import AuthStrategyRepository from './authStrategy.repository';
-import { APP_URL, DOCKER_REGISTRY } from '../config';
-import { promises as fs } from 'fs';
+import { APP_URL, DOCKER_REGISTRY, UPLOAD_URL } from '../config';
+import { promises as fs, createReadStream } from 'fs';
+import { Response } from 'express';
+import unzipper from 'unzipper';
 
 @EntityRepository(PipelineEntity)
 export default class PipelineRepository {
@@ -271,17 +273,16 @@ export default class PipelineRepository {
   };
 
   public setupServiceTemplate = (repoSlug: string, lang: string, branches: string[]) => {
-    const buildTemplateFolder = path.join(__dirname, `../services-build-templates`);
+    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates`);
 
     const childProcess = shell
       .cd(buildTemplateFolder)
       .exec(
         `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30 ${this.getLanguageRepo(
           lang,
-        )}+install --service=${repoSlug} --envs=${branches.toString()}`,
+        )}+install --service=${repoSlug} --envs=${branches.toString()} --upload_url=${UPLOAD_URL}`,
         {
           async: true,
-          silent: true,
         },
       );
 
@@ -346,6 +347,20 @@ export default class PipelineRepository {
     this.setupServiceTemplate(pipeline.repo_id, createPipelineData.lang, branchArray);
 
     return pipeline;
+  };
+
+  public extractServiceFolder = (data: any, res: Response) => {
+    const uploadPath = path.join(__dirname, `../../temp_archive/`) + data.name;
+    const serviceTemplatePath = path.join(__dirname, `../../services-build-templates/${data.name.split('.')[0]}`);
+
+    // Use the mv() method to place the file somewhere on your server
+    data.mv(uploadPath, function (err) {
+      if (err) return res.status(500).send(err);
+
+      createReadStream(uploadPath).pipe(unzipper.Extract({ path: serviceTemplatePath }));
+      fs.unlink(uploadPath);
+      res.send('File saved!');
+    });
   };
 
   public getPipelines = async () => {
