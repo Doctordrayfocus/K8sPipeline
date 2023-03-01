@@ -271,7 +271,7 @@ export default class PipelineRepository {
   };
 
   public setupServiceTemplate = (repoSlug: string, lang: string, branches: string[]) => {
-    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates`);
+    const buildTemplateFolder = path.join(__dirname, `../services-build-templates`);
 
     const childProcess = shell
       .cd(buildTemplateFolder)
