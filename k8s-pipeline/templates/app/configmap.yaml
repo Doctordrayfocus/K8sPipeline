@@ -26,3 +26,4 @@ data:
   TEMPLATE_SYNC_INTERVAL: "{{ .Values.pipelineApp.buildTemplateSyncInterval }}"
   DOCKER_REGISTRY: "{{ .Values.deployController.dockerRegistry }}"
   APP_URL: "{{ .Values.pipelineApp.appUrl }}"
+  UPLOAD_URL: "https://{{ .Values.pipelineApp.appUrl }}/save-service-setup"

@@ -157,11 +157,9 @@ export default class PipelineRepository {
 
   public runBuildPipeline = async (build: PipelineBuild, pipeline: PipelineEntity, commitData: CommitData, template: string) => {
     // run pipeline
-    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates/${pipeline.repo_id}`);
+    const buildTemplateFolder = path.join(__dirname, `../../services-build-templates/${pipeline.repo_id}/setup-arena/${pipeline.repo_id}`);
 
-    const repoVariables = `--service=${pipeline.repo_id} --version=${build.id} --docker_registry=${DOCKER_REGISTRY} --env=${
-      commitData.branch
-    } --apptype=${pipeline.lang} --authToken=${await this.getAccessToken('bitbucket')} --repoGitUrl=${commitData.repoUrl} --template="${template}"`;
+    const repoVariables = `--service=${pipeline.repo_id} --version=${build.id} --docker_registry=${DOCKER_REGISTRY} --env=${commitData.branch} --apptype=${pipeline.lang}  --repoGitUrl=${commitData.repoUrl} --template="${template}"`;
 
     const earthly = () => {
       return `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30`;
@@ -173,8 +171,15 @@ export default class PipelineRepository {
       --data '${data}'`;
     };
 
+    const cloneProject = async () => {
+      fs.unlink(buildTemplateFolder + '/template/docker/app');
+      return `git -c "http.extraHeader=Authorization: Bearer ${await this.getAccessToken('bitbucket')}" clone ${
+        commitData.repoUrl
+      } template/docker/app`;
+    };
+
     const childProcess = shell.cd(buildTemplateFolder).exec(
-      `${earthly()} +setup --no-cache ${repoVariables}  // && \
+      `${await cloneProject()} && \
         ${updateBuildProgress(
           JSON.stringify({
             status: 'in_progress',
