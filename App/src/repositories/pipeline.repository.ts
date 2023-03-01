@@ -162,7 +162,7 @@ export default class PipelineRepository {
     const repoVariables = `--service=${pipeline.repo_id} --version=${build.id} --docker_registry=${DOCKER_REGISTRY} --env=${commitData.branch} --apptype=${pipeline.lang}  --repoGitUrl=${commitData.repoUrl} --template="${template}"`;
 
     const earthly = () => {
-      return `docker run --privileged -t -v $(pwd):/workspace -v earthly-tmp:/tmp/earthly:rw earthly/earthly:v0.6.30`;
+      return `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30`;
     };
 
     const updateBuildProgress = (data: string) => {

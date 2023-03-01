@@ -26,9 +26,13 @@ spec:
         - name: docker-directory
           hostPath:
             path: /var/lib/docker
+        - name: buildkitd-temp
+          emptyDir: {} # Or other volume type
+      securityContext:
+        privileged: true
       containers:
         - name: webserver
-          image: drayfocus/k8spipeline-app:0.38
+          image: drayfocus/k8spipeline-app:0.39
           envFrom:
             - configMapRef:
                 name: k8spipeline-app-config
@@ -45,3 +49,5 @@ spec:
             - mountPath: /var/lib/docker
               name: docker-directory
               readOnly: false
+            - mountPath: /tmp/earthly
+              name: buildkitd-temp
