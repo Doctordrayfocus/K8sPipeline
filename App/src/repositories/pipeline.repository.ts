@@ -188,7 +188,7 @@ export default class PipelineRepository {
             percentageCompleted: 30,
           }),
         )} && \
-        ${earthly()} +build --push ${repoVariables} && \
+        ${earthly()}  --push  +build ${repoVariables} && \
         ${updateBuildProgress(
           JSON.stringify({
             status: 'in_progress',
@@ -196,7 +196,7 @@ export default class PipelineRepository {
             percentageCompleted: 60,
           }),
         )} && \
-        ${earthly()} +deploy --no-cache ${repoVariables} && \
+        ${earthly()} --no-cache  +deploy ${repoVariables} && \
         ${updateBuildProgress(
           JSON.stringify({
             status: 'completed',
@@ -282,7 +282,7 @@ export default class PipelineRepository {
     const childProcess = shell
       .cd(buildTemplateFolder)
       .exec(
-        `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30 ${this.getLanguageRepo(
+        `docker run -t -v $(pwd):/workspace -v /var/run/docker.sock:/var/run/docker.sock -e NO_BUILDKIT=1 earthly/earthly:v0.6.30   --no-cache ${this.getLanguageRepo(
           lang,
         )}+install --service=${repoSlug} --envs=${branches.toString()} --upload_url=${UPLOAD_URL}`,
         {
