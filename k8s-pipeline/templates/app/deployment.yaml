@@ -30,7 +30,7 @@ spec:
           emptyDir: {} # Or other volume type
       containers:
         - name: webserver
-          image: drayfocus/k8spipeline-app:0.43
+          image: drayfocus/k8spipeline-app:0.45
           envFrom:
             - configMapRef:
                 name: k8spipeline-app-config
@@ -42,9 +42,6 @@ spec:
           volumeMounts:
             - mountPath: /var/run/docker.sock
               name: docker-sock
-              readOnly: false
-            - mountPath: /var/lib/docker
-              name: docker-directory
               readOnly: false
             - mountPath: /tmp/earthly
               name: buildkitd-temp
