@@ -130,7 +130,7 @@ export default class PipelineRepository {
           if (buildData) {
             buildData.status = data.status;
             buildData.ended_at = new Date();
-            buildData.content = buildData.content + data.content;
+            buildData.content = buildData.content + (data.content ? data.content : '');
 
             buildRepository
               .save(buildData)
@@ -172,16 +172,11 @@ export default class PipelineRepository {
     };
 
     const cloneProject = async () => {
-      fs.unlink(buildTemplateFolder + '/template/docker/app')
-        .then(() => {
-          //
-        })
-        .catch(() => {
-          // do nothing
-        });
+      shell.cd(buildTemplateFolder).exec('rm -rf templates/docker/app');
+
       return `git -c "http.extraHeader=Authorization: Bearer ${await this.getAccessToken('bitbucket')}" clone ${
         commitData.repoUrl
-      } template/docker/app`;
+      } templates/docker/app`;
     };
 
     const childProcess = shell.cd(buildTemplateFolder).exec(
@@ -211,7 +206,6 @@ export default class PipelineRepository {
         )}`,
       {
         async: true,
-        silent: true,
       },
     );
 
@@ -232,17 +226,10 @@ export default class PipelineRepository {
         `,
         {
           async: true,
-          silent: true,
         },
       );
 
-      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
-        .then(() => {
-          //
-        })
-        .catch(() => {
-          // do nothing
-        });
+      await fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
     });
 
     childProcess.stderr.on('close', async () => {
@@ -261,23 +248,11 @@ export default class PipelineRepository {
         },
       );
 
-      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
-        .then(() => {
-          //
-        })
-        .catch(() => {
-          // do nothing
-        });
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
     });
 
     childProcess.stdout.on('end', async () => {
-      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
-        .then(() => {
-          //
-        })
-        .catch(() => {
-          // do nothing
-        });
+      fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`));
     });
   };
 
@@ -426,7 +401,8 @@ export default class PipelineRepository {
         .then(data => {
           pipelineBuildData.content = data;
         })
-        .catch(() => {
+        .catch(error => {
+          console.log(error);
           pipelineBuildData.content = '';
         });
     }
