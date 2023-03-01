@@ -13,8 +13,9 @@ RUN apk add docker
 
 RUN wget https://github.com/earthly/earthly/releases/download/v0.6.30/earthly-linux-amd64 -O /usr/local/bin/earthly && \
   chmod +x /usr/local/bin/earthly && \
-  /usr/local/bin/earthly bootstrap &&  /usr/local/bin/earthly config FORCE_COLOR 1
+  /usr/local/bin/earthly bootstrap
 
+ENV FORCE_COLOR=1
 
 RUN apk add --update nodejs npm
 
