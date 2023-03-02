@@ -14,7 +14,6 @@ import { APP_URL, DOCKER_REGISTRY } from '../config';
 import { promises as fs, createReadStream } from 'fs';
 import { Response } from 'express';
 import unzipper from 'unzipper';
-import { exec, spawn } from 'child_process';
 
 export default class PipelineRepository {
   private bitbucketClient: APIClient;
@@ -336,7 +335,7 @@ export default class PipelineRepository {
       pipeline = await this.createPipeline({
         description: createPipelineData.repoDescription,
         repo_id: createPipelineData.repoId,
-        repo_url: createPipelineData.repo_url,
+        repo_url: 'empty',
         status: 'inactive',
         lang: createPipelineData.lang,
         full_name: createPipelineData.repo_name,
