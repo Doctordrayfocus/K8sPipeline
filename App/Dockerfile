@@ -13,8 +13,7 @@ RUN apk add docker
 
 USER root
 
-
-RUN git clone https://github.com/earthly/earthly.git && chmod -R 777 earthly && \
+RUN git clone https://github.com/earthly/earthly.git && \
   ./earthly +for-linux
 
 ENV FORCE_COLOR=1
