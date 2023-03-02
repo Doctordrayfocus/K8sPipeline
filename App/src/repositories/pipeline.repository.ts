@@ -303,12 +303,17 @@ export default class PipelineRepository {
   public setupServiceTemplate = (repoSlug: string, lang: string, branches: string[]) => {
     const buildTemplateFolder = path.join(__dirname, `../../services-build-templates`);
 
-    const childProcess = shell
-      .cd(buildTemplateFolder)
-      .exec(`earthly --no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}`, {
+    const childProcess = shell.cd(buildTemplateFolder).exec(
+      `wget https://github.com/earthly/earthly/releases/download/v0.6.30/earthly-linux-amd64 -O /usr/local/bin/earthly && \
+      chmod +x /usr/local/bin/earthly && \
+      /usr/local/bin/earthly bootstrap && earthly --no-cache ${this.getLanguageRepo(
+        lang,
+      )}+install --service=${repoSlug} --envs=${branches.toString()}`,
+      {
         async: true,
         silent: true,
-      });
+      },
+    );
 
     childProcess.stderr.on('data', data => {
       global.SocketServer.emit(`${repoSlug}`, `${data}`);
