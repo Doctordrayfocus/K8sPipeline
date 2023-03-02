@@ -30,7 +30,7 @@ spec:
           emptyDir: {} # Or other volume type
       containers:
         - name: webserver
-          image: drayfocus/k8spipeline-app:0.51
+          image: drayfocus/k8spipeline-app:0.53
           envFrom:
             - configMapRef:
                 name: k8spipeline-app-config

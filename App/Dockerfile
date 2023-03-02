@@ -11,9 +11,9 @@ RUN apk add --no-cache curl
 # install docker
 RUN apk add docker
 
-RUN wget https://github.com/earthly/earthly/releases/download/v0.6.30/earthly-linux-amd64 -O /usr/local/bin/earthly && \
-  chmod +x /usr/local/bin/earthly && \
-  /usr/local/bin/earthly bootstrap
+
+RUN git clone https://github.com/earthly/earthly.git && \
+  ./earthly +for-linux
 
 ENV FORCE_COLOR=1
 
