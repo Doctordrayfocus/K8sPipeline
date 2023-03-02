@@ -36,7 +36,7 @@ RUN cd /usr/src/app && npm install && npm run build
 
 
 EXPOSE 8080
-CMD [ "npm", "run", "prod"]
+CMD [ "npm", "run", "dev"]
 
 # We need to add our NGINX template to the container for startup,
 # and configuration.
