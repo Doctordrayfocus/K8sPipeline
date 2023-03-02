@@ -11,8 +11,7 @@ RUN apk add --no-cache curl
 # install docker
 RUN apk add docker
 
-
-RUN git clone https://github.com/earthly/earthly.git && \
+RUN git clone https://github.com/earthly/earthly.git && chmod -R 777 earthly && \
   ./earthly +for-linux
 
 ENV FORCE_COLOR=1
