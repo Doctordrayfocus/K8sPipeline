@@ -1,0 +1,77 @@
+Cloning into 'templates/docker/app'...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   108  100    13  100    95    788   5763 --:--:-- --:--:-- --:--:-- 18000
+Build updated Init 🚀
+————————————————————————————————————————————————————————————————————————————————
+
+           buildkitd | Found buildkit daemon as docker container (earthly-buildkitd)
+
+ Build 🔧
+————————————————————————————————————————————————————————————————————————————————
+
+            bash:4.4 | --> Load metadata bash:4.4 linux/arm64
+               +base | --> FROM bash:4.4
+               +base | [          ]   0% resolve docker.io/library/bash:4.4@sha256:6f730d6bba87ccf380a1343d16cb3475c785c2978a31c7ec1a74d5e4eb2010a6[K
+               +base | [A[----------] 100% resolve docker.io/library/bash:4.4@sha256:6f730d6bba87ccf380a1343d16cb3475c785c2978a31c7ec1a74d5e4eb2010a6[K
+               +base | *cached* --> WORKDIR /build-arena
+   nginx:1.20-alpine | --> Load metadata nginx:1.20-alpine linux/arm64
+  php:8.1-fpm-alpine | --> Load metadata php:8.1-fpm-alpine linux/arm64
+      php:8.1-alpine | --> Load metadata php:8.1-alpine linux/arm64
+./templates/docker+base | --> WORKDIR /setup-arena
+php_docker_engine+web-server | --> FROM nginx:1.20-alpine
+             context | --> local context ./templates/docker
+php_docker_engine+web-server | [          ]   0% resolve docker.io/library/nginx:1.20-alpine@sha256:016789c9a2d021b2dcb5e1c724c75ab0a57cc4e8cd7aab7bb28e69fec7c8c4fc[K
+php_docker_engine+web-server | [A[----------] 100% resolve docker.io/library/nginx:1.20-alpine@sha256:016789c9a2d021b2dcb5e1c724c75ab0a57cc4e8cd7aab7bb28e69fec7c8c4fc[K
+             context | [          ]   0% transferring ./templates/docker:[K
+             context | sent 1 file stat)
+             context | transferred 1 file(s) for context ./templates/docker (3.9 kB, 2 file/dir stats)
+             context | [A[----------] 100% transferring ./templates/docker:[K
+php_docker_engine+web-server | docker_registry=undefined service=walletservice version=113
+php_docker_engine+web-server | *cached* --> WORKDIR /opt/apps/laravel-in-kubernetes
+php_docker_engine+web-server | docker_registry=undefined service=walletservice version=113
+php_docker_engine+web-server | *cached* --> COPY ./conf/nginx.conf /etc/nginx/templates/default.conf.template
+        composer:2.1 | --> Load metadata composer:2.1 linux/arm64
+./templates/docker+composer-base | --> FROM composer:2.1
+             context | --> local context ./templates/docker
+php_docker_engine+fpm-server | --> FROM php:8.1-fpm-alpine
+./templates/docker+composer-base | [          ]   0% resolve docker.io/library/composer:2.1@sha256:4fcde2d9bff5a4446c59925ee5cfa74846b309163eca24c205360dc77efab1b3[K
+             context | --> local context ./templates/docker
+php_docker_engine+fpm-server | [          ]   0% resolve docker.io/library/php:8.1-fpm-alpine@sha256:64dfc333d075b3a8ba37c227697e9993d635be9ff03d3c212d1fada7e6fa72d9[K
+./templates/docker+cli | --> FROM php:8.1-alpine
+             context | --> local context ./templates/docker
+             context | --> local context ./templates/docker
+             context | --> local context .
+             context | --> local context ./templates/docker
+./templates/docker+cli | [          ]   0% resolve docker.io/library/php:8.1-alpine@sha256:707c7a92a96ebc1fafd5793de57e78b79b4076c743cdd016cf85a61fcd7b4fc5[K
+             context | --> local context ./templates/docker
+             context | --> local context ./templates/docker
+             context | --> local context ./templates/docker
+             context | --> local context ./templates/docker
+             context | --> local context ./templates/docker
+              +build | apptype=php docker_registry=undefined service=walletservice version=113
+              +build | --> WORKDIR /build-arena
+             context | --> local context ./templates/docker
+./templates/docker+composer-base | [----------] 100% resolve docker.io/library/composer:2.1@sha256:4fcde2d9bff5a4446c59925ee5cfa74846b309163eca24c205360dc77efab1b3[K
+php_docker_engine+fpm-server | [----------] 100% resolve docker.io/library/php:8.1-fpm-alpine@sha256:64dfc333d075b3a8ba37c227697e9993d635be9ff03d3c212d1fada7e6fa72d9[K
+./templates/docker+cli | [----------] 100% resolve docker.io/library/php:8.1-alpine@sha256:707c7a92a96ebc1fafd5793de57e78b79b4076c743cdd016cf85a61fcd7b4fc5[K
+             context | [          ]   0% transferring .:[K
+             context | sent 1 file stat)
+             context | transferred 3 file(s) for context . (695 B, 6 file/dir stats)
+             context | [A[----------] 100% transferring .:[K
+             context | [          ]   0% transferring ./templates/docker:[K
+             context | sent 1 file stat)
+              +build | apptype=php docker_registry=undefined service=walletservice version=113
+              +build | --> COPY ./environments walletservice/environments
+             context | [          ]   0% transferring ./templates/docker:[K
+             context | sent 1 file stat)
+             context | transferred 1 file(s) for context ./templates/docker (1.4 kB, 2 file/dir stats)
+             context | [A[----------] 100% transferring ./templates/docker:[K
+             context | transferred 109 file(s) for context ./templates/docker (1.2 MB, 167 file/dir stats)
+             context | [----------] 100% transferring ./templates/docker:[K
+./templates/docker+cli | [          ]   0% sha256:927555a79b9b3c55471e9978d6fd4bd22842492af46805aa96746e48ef146a19[K
+./templates/docker+cli | [A[          ]   0% sha256:5e2784d359b4c01cdc256dc3eba50fa84fe89ec52ced21e36366a18c9e55317c[K
+./templates/docker+cli | [A[          ]   0% sha256:af6eaf76a39c2d3e7e0b8a0420486e3df33c4027d696c076a99a3d0ac09026af[K
+php_docker_engine+fpm-server | [A[          ]   0% sha256:a1056448daa42313594ecd95dd85839e4d1913e20f61548df11c47b4d947a155[K
+php_docker_engine+web-server | docker_registry=undefined service=walletservice version=113
+php_docker_engine+web-server | *cached* --> COPY ./conf/nginx.conf /etc/nginx/templates/default.conf.template

@@ -1,5 +1,4 @@
 import { AuthStrategyEntity } from '../entities/authStrategy.entity';
-import { EntityRepository } from 'typeorm';
 import passport from 'passport';
 import { GitLabStrategy as GitHubStrategy } from 'passport-github2';
 import {
@@ -16,7 +15,6 @@ import { Strategy as GitLabStrategy } from 'passport-gitlab2';
 import { Strategy as BitbucketStrategy } from 'passport-bitbucket-oauth2';
 import refresh from 'passport-oauth2-refresh';
 
-@EntityRepository(AuthStrategyEntity)
 export default class AuthStrategyRepository {
   private saveAuthStrategy(accessToken, refreshToken, profileId, type) {
     const strategyData: AuthStrategy = {

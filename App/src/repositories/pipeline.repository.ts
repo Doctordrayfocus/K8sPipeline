@@ -8,15 +8,14 @@ import VariableExtractor from '../helpers/VariableExtractor';
 import { BuildUpdateData, CommitData, Pipeline, PipelineBuild, PipelineSetting } from '../interfaces/pipeline.interface';
 import { APIClient, Bitbucket } from 'bitbucket';
 import path from 'path';
-import { EntityRepository } from 'typeorm';
 import shell from 'shelljs';
 import AuthStrategyRepository from './authStrategy.repository';
 import { APP_URL, DOCKER_REGISTRY } from '../config';
 import { promises as fs, createReadStream } from 'fs';
 import { Response } from 'express';
 import unzipper from 'unzipper';
+import { exec, spawn } from 'child_process';
 
-@EntityRepository(PipelineEntity)
 export default class PipelineRepository {
   private bitbucketClient: APIClient;
 
@@ -25,22 +24,30 @@ export default class PipelineRepository {
       where: {
         type: 'bitbucket',
       },
-    }).then(async strategy => {
-      let newToken = '';
-      if (strategy) {
-        const AuthStrategy = new AuthStrategyRepository();
-        const newAccessToken: string = await AuthStrategy.requestNewAccessToken('bitbucket', strategy.refresh_token);
-        newToken = newAccessToken;
-        const clientOptions = {
-          auth: {
-            token: newAccessToken ? newAccessToken : strategy.access_token,
-          },
-        };
-        this.bitbucketClient = new Bitbucket(clientOptions);
-      }
-
-      return newToken;
-    });
+    })
+      .then(async strategy => {
+        let newToken = '';
+        if (strategy) {
+          const AuthStrategy = new AuthStrategyRepository();
+          return AuthStrategy.requestNewAccessToken('bitbucket', strategy.refresh_token)
+            .then(newAccessToken => {
+              newToken = newAccessToken;
+              const clientOptions = {
+                auth: {
+                  token: newAccessToken ? newAccessToken : strategy.access_token,
+                },
+              };
+              this.bitbucketClient = new Bitbucket(clientOptions);
+              return newToken;
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   private getAccessToken = async (strategy: string) => {
@@ -62,45 +69,44 @@ export default class PipelineRepository {
     return pipelineTemplateRepo;
   };
 
-  public getWorkspaces = () => {
-    return this.configureBitbucket().then(() => {
-      return this.bitbucketClient.workspaces.getWorkspaces({
-        pagelen: 30,
-      });
+  public getWorkspaces = async () => {
+    await this.configureBitbucket();
+    return this.bitbucketClient.workspaces.getWorkspaces({
+      pagelen: 30,
     });
   };
 
-  public getRespository = (workspaceId: string) => {
-    return this.configureBitbucket().then(() => {
-      return this.bitbucketClient.repositories.list({
-        workspace: workspaceId,
-        pagelen: 100,
-      });
+  public getRespository = async (workspaceId: string) => {
+    await this.configureBitbucket();
+
+    return this.bitbucketClient.repositories.list({
+      workspace: workspaceId,
+      pagelen: 100,
     });
   };
 
-  public getRepositoryBranches = (workspaceId: string, repoId: string) => {
-    return this.configureBitbucket().then(() => {
-      return this.bitbucketClient.repositories.listBranches({
-        workspace: workspaceId,
-        pagelen: 100,
-        repo_slug: repoId,
-      });
+  public getRepositoryBranches = async (workspaceId: string, repoId: string) => {
+    await this.configureBitbucket();
+
+    return this.bitbucketClient.repositories.listBranches({
+      workspace: workspaceId,
+      pagelen: 100,
+      repo_slug: repoId,
     });
   };
 
-  public setRepositoryWebhook = (workspaceId: string, repo_slug: string) => {
-    this.configureBitbucket().then(() => {
-      return this.bitbucketClient.webhooks.create({
-        repo_slug: repo_slug,
-        workspace: workspaceId,
-        _body: {
-          name: 'K8sPipelineHook',
-          url: `https://${APP_URL}/bitbucket-webhook`,
-          active: true,
-          events: ['repo:push'],
-        },
-      });
+  public setRepositoryWebhook = async (workspaceId: string, repo_slug: string) => {
+    await this.configureBitbucket();
+
+    return this.bitbucketClient.webhooks.create({
+      repo_slug: repo_slug,
+      workspace: workspaceId,
+      _body: {
+        name: 'K8sPipelineHook',
+        url: `https://${APP_URL}/bitbucket-webhook`,
+        active: true,
+        events: ['repo:push'],
+      },
     });
   };
 
@@ -215,6 +221,11 @@ export default class PipelineRepository {
       await fs.appendFile(path.join(__dirname, `../../build_logs/${build.uuid}.log`), data);
     });
 
+    childProcess.stderr.on('data', async data => {
+      global.SocketServer.emit(`${build.uuid}`, data);
+      await fs.appendFile(path.join(__dirname, `../../build_logs/${build.uuid}.log`), data);
+    });
+
     childProcess.stderr.on('error', async () => {
       const buildLogs = await fs.readFile(path.join(__dirname, `../../build_logs/${build.uuid}.log`), 'base64');
       const stringifiedData = JSON.stringify({
@@ -261,7 +272,7 @@ export default class PipelineRepository {
         });
     });
 
-    childProcess.stdout.on('end', async () => {
+    childProcess.stderr.on('end', async () => {
       fs.unlink(path.join(__dirname, `../../build_logs/${build.uuid}.log`))
         .then()
         .catch(error => {
@@ -300,7 +311,11 @@ export default class PipelineRepository {
         silent: true,
       });
 
-    childProcess.stdout.on('data', function (data) {
+    childProcess.stderr.on('data', data => {
+      global.SocketServer.emit(`${repoSlug}`, `${data}`);
+    });
+
+    childProcess.stdout.on('data', data => {
       global.SocketServer.emit(`${repoSlug}`, data);
     });
   };

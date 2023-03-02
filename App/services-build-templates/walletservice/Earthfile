@@ -12,7 +12,7 @@ install:
 	ARG apptype='php'
 
 	WORKDIR /setup-arena
-
+	
 	RUN mkdir $service $service/app
 
 	COPY templates $service/templates
@@ -21,15 +21,40 @@ install:
 	FOR --sep="," env IN "$envs"
 		ENV dir="./$service/environments/$env"
 		RUN echo "Creating environment $env"
-
+	
 		RUN mkdir -p $dir $dir/extras-$service
-		DO php_kubernetes_engine+LARAVELAPP --service=$service --env=$env --version=$version
-		DO php_kubernetes_engine+CONFIGMAP --service=$service --env=$env
+		DO php_kubernetes_engine+LARAVELAPP --service=$service --env=$env --version=$version 
+		DO php_kubernetes_engine+CONFIGMAP --service=$service --env=$env 
 		DO php_kubernetes_engine+SECRETS --service=$service --env=$env
 
 	END
 
 	SAVE ARTIFACT $service AS LOCAL ${service}
+
+setup:
+	FROM alpine:3.5
+
+	ARG env='dev'
+	ARG authToken=''
+	ARG repoGitUrl=''
+
+	RUN mkdir app
+
+	WORKDIR app
+
+	RUN apk update
+
+	RUN apk add git
+
+	## Using this is not a good decision, I will change it once I can find a better way to do this.
+
+	RUN git -c "http.extraHeader=Authorization: Bearer ${authToken}" clone ${repoGitUrl} .
+
+	RUN git checkout ${env}
+
+	RUN rm -rf package-lock.json composer.lock
+
+	SAVE ARTIFACT * AS LOCAL templates/docker/app/
 
 build:
 	ARG version='0.1'
@@ -42,25 +67,24 @@ build:
 
 	COPY ./environments ${service}/environments
 
-	BUILD php_docker_engine+fpm-server --version=$version --docker_registry=$docker_registry --service=$service
+	BUILD php_docker_engine+fpm-server --version=$version --docker_registry=$docker_registry --service=$service 
 	BUILD php_docker_engine+web-server --version=$version --docker_registry=$docker_registry --service=$service
-	BUILD php_docker_engine+cron --version=$version --docker_registry=$docker_registry --service=$service
-
-
+	BUILD php_docker_engine+cron --version=$version --docker_registry=$docker_registry --service=$service 
+	
+	
 deploy:
 	FROM alpine/doctl:1.22.2
 	# setup kubectl
-	ARG envs='dev'
+	ARG service=""
+	ARG envs=""
 	ARG DIGITALOCEAN_ACCESS_TOKEN=""
-	ARG apptype='php'
-	ARG service='sample'
-	ARG version=""
+	ARG template=''
 
 	COPY ./environments ${service}/environments
 
 	## Update apptemplate.yaml with latest versions
 
-	DO php_kubernetes_engine+LARAVELAPP --service=$service --version=$version --env=$envs
+	DO php_kubernetes_engine+LARAVELAPP --template=$template --service=$service --envs=$envs
 
 
 	RUN kubectl version --client
@@ -69,10 +93,10 @@ deploy:
 
 	# save Kube config
 	RUN doctl kubernetes cluster kubeconfig save roof-income
-	RUN kubectl config get-contexts
+	RUN kubectl config get-contexts	
 
 	## deploy kubernetes configs
-
+	
 	RUN kubectl cp $service/environments/${envs}/extras-$service $(kubectl get pod -l app=roofapptemplate-controller -o jsonpath="{.items[0].metadata.name}"):/usr/src/app/configs
 	RUN kubectl apply -f $service/environments/${envs}/app-template.yaml
 
@@ -83,6 +107,5 @@ deploy:
 	# Running database migration
 
 	# RUN kubectl exec -n ${envs}-${service} deploy/${service}-fpm  -- php artisan migrate --force
-
-
+	
 

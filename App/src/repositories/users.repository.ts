@@ -1,12 +1,10 @@
 import { hash } from 'bcrypt';
-import { EntityRepository } from 'typeorm';
 import { CreateUserDto } from '../dtos/users.dto';
 import { UserEntity } from '../entities/users.entity';
 import { HttpException } from '../exceptions/HttpException';
 import { User } from '../interfaces/users.interface';
 import { isEmpty } from '../utils/util';
 
-@EntityRepository()
 export default class UserRepository {
   public async userFindAll(): Promise<User[]> {
     const users: User[] = await UserEntity.find();

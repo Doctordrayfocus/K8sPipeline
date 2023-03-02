@@ -1,0 +1,203 @@
+2023-03-02 07:04:37 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/auth.repository.ts[0m:[93m10[0m:[93m1[0m - [91merror[0m[90m TS1127: [0mInvalid character.
+
+[7m10[0m \
+[7m  [0m [91m[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/auth.repository.ts[0m:[93m10[0m:[93m1[0m - [91merror[0m[90m TS1127: [0mInvalid character.
+
+[7m10[0m \
+[7m  [0m [91m[0m
+
+    at createTSError (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:863:19)
+    at /Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1379:34
+    at Object.compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1458:13)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/resolvers/auth.resolver.ts:3:1)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+2023-03-02 07:05:10 error: uncaughtException: Cannot read properties of undefined (reading 'listen')
+TypeError: Cannot read properties of undefined (reading 'listen')
+    at App.listen (/Users/mac/Documents/www/K8sPipeline/App/src/app.ts:62:21)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/src/server.ts:8:5)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at phase4 (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/bin.ts:649:14)
+    at bootstrap (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/bin.ts:95:10)
+    at main (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/bin.ts:55:10)
+    at Object.<anonymous> (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/bin.ts:800:3)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+2023-03-02 07:29:55 error: uncaughtException: await is only valid in async functions and the top level bodies of modules
+/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:66
+            await this.configureBitbucket();
+            ^^^^^
+
+SyntaxError: await is only valid in async functions and the top level bodies of modules
+    at Object.compileFunction (node:vm:360:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1088:15)
+    at Module._compile (node:internal/modules/cjs/loader:1123:27)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+2023-03-02 07:30:19 error: uncaughtException: await is only valid in async functions and the top level bodies of modules
+/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:72
+            await this.configureBitbucket();
+            ^^^^^
+
+SyntaxError: await is only valid in async functions and the top level bodies of modules
+    at Object.compileFunction (node:vm:360:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1088:15)
+    at Module._compile (node:internal/modules/cjs/loader:1123:27)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+2023-03-02 07:30:51 error: uncaughtException: await is only valid in async functions and the top level bodies of modules
+/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:79
+            await this.configureBitbucket();
+            ^^^^^
+
+SyntaxError: await is only valid in async functions and the top level bodies of modules
+    at Object.compileFunction (node:vm:360:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1088:15)
+    at Module._compile (node:internal/modules/cjs/loader:1123:27)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+2023-03-02 07:31:24 error: uncaughtException: await is only valid in async functions and the top level bodies of modules
+/Users/mac/Documents/www/K8sPipeline/App/src/repositories/pipeline.repository.ts:87
+            await this.configureBitbucket();
+            ^^^^^
+
+SyntaxError: await is only valid in async functions and the top level bodies of modules
+    at Object.compileFunction (node:vm:360:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1088:15)
+    at Module._compile (node:internal/modules/cjs/loader:1123:27)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+2023-03-02 08:19:42 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m30[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                             ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                              ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m36[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                   ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m70[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                     ~~~~~~~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m79[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                              ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m92[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                                           ~~~~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m98[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                                                 ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m107[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                                                          ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m30[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                             ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                              ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m36[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                   ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m70[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                     ~~~~~~~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m79[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                              ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m92[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                                           ~~~~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m98[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                                                 ~[0m
+[96msrc/repositories/pipeline.repository.ts[0m:[93m315[0m:[93m107[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m315[0m       `earthly`, [--no-cache ${this.getLanguageRepo(lang)}+install --service=${repoSlug} --envs=${branches.toString()}]
+[7m   [0m [91m                                                                                                          ~[0m
+
+    at createTSError (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:863:19)
+    at /Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1379:34
+    at Object.compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1458:13)
+    at Module.m._compile (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/mac/Documents/www/K8sPipeline/App/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:878:12)
+    at Module.require (node:internal/modules/cjs/loader:1061:19)
+2023-03-02 08:21:49 error: uncaughtException: spawn earthly --no-cache github.com/Doctordrayfocus/K8PipelinePHP+install --service=walletservice --envs=master ENOENT
+Error: spawn earthly --no-cache github.com/Doctordrayfocus/K8PipelinePHP+install --service=walletservice --envs=master ENOENT
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:283:19)
+    at onErrorNT (node:internal/child_process:476:16)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+2023-03-02 08:25:27 error: uncaughtException: spawn earthly --no-cache github.com/Doctordrayfocus/K8PipelinePHP+install --service=walletservice --envs=master ENOENT
+Error: spawn earthly --no-cache github.com/Doctordrayfocus/K8PipelinePHP+install --service=walletservice --envs=master ENOENT
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:283:19)
+    at onErrorNT (node:internal/child_process:476:16)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+2023-03-02 08:26:05 error: uncaughtException: spawn earthly --no-cache github.com/Doctordrayfocus/K8PipelinePHP+install --service=walletservice --envs=master ENOENT
+Error: spawn earthly --no-cache github.com/Doctordrayfocus/K8PipelinePHP+install --service=walletservice --envs=master ENOENT
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:283:19)
+    at onErrorNT (node:internal/child_process:476:16)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)

@@ -22,8 +22,12 @@ export class pipelineResolver extends PipelineRepository {
   }
 
   async createPipelineTemplate(createPipelineData: CreatePipelineDto): Promise<PipelineEntity> {
-    const pipeline = await this.createServicePipeline(createPipelineData);
-    return pipeline;
+    try {
+      const pipeline = await this.createServicePipeline(createPipelineData);
+      return pipeline;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async getPipelineData(pipelineUuid: string): Promise<PipelineEntity> {

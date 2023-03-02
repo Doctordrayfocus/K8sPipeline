@@ -1,6 +1,5 @@
 import { hash, compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
-import { EntityRepository } from 'typeorm';
 import { SECRET_KEY } from '../config';
 import { CreateUserDto } from '../dtos/users.dto';
 import { UserEntity } from '../entities/users.entity';
@@ -9,7 +8,6 @@ import { DataStoredInToken, TokenData } from '../interfaces/auth.interface';
 import { User } from '../interfaces/users.interface';
 import { isEmpty } from '../utils/util';
 
-@EntityRepository(UserEntity)
 export default class AuthRepository {
   public async userSignUp(userData: CreateUserDto): Promise<User> {
     if (isEmpty(userData)) throw new HttpException(400, 'userData is empty');
