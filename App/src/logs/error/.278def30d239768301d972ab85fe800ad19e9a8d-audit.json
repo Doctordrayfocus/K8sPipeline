@@ -34,6 +34,11 @@
             "date": 1677625889603,
             "name": "/Users/mac/Documents/www/K8sPipeline/App/src/logs/error/2023-03-01.log",
             "hash": "8157112d70afa3178e684f1327ed77669f0eea2817a67ed46024e220a41f27f5"
+        },
+        {
+            "date": 1677732832656,
+            "name": "/Users/mac/Documents/www/K8sPipeline/App/src/logs/error/2023-03-02.log",
+            "hash": "66c429dce4600622a9304003a29582cae8a8e755e58fdd8ebadcd271dfd83943"
         }
     ],
     "hashType": "sha256"
